@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/players"
+        android:title="Players"
+        android:icon="@drawable/ic_action_player"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/jugarPartida"
+        android:title="Jugar"
+        android:icon="@drawable/ic_action_jugar"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/adminArea"
+        android:title="Admin"
+        android:icon="@drawable/ic_action_admin"
+        app:showAsAction="always"/>
+
+</menu>
