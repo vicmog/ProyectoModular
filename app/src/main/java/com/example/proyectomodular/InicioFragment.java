@@ -23,9 +23,7 @@ public class InicioFragment extends Fragment {
     private BottomNavigationView bottomNavigationView;
     private NavController navController;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_inicio, container, false);
     }
 
@@ -34,6 +32,7 @@ public class InicioFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bottomNavigationView = view.findViewById(R.id.bottom_navigation);
+
         navController = Navigation.findNavController(view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
