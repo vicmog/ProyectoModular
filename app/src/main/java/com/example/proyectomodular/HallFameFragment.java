@@ -34,8 +34,10 @@ public class HallFameFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bottomNavigationView = view.findViewById(R.id.bottom_navigation);
+        bottomNavigationView = view.findViewById(R.id.bottom_navigation_hall);
         navController = Navigation.findNavController(view);
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

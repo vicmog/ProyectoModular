@@ -9,6 +9,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,23 +32,17 @@ public class InicioFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bottomNavigationView = view.findViewById(R.id.bottom_navigation);
+        init();
+    }
 
-        navController = Navigation.findNavController(view);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private void init() {
+        navController = Navigation.findNavController(getView());
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-
-                    case R.id.players:navController.navigate(R.id.hallFameFragment);
-                        break;
-                    case R.id.jugarPartida:navController.navigate(R.id.juegoFragment);
-                        break;
-                    case R.id.adminArea:navController.navigate(R.id.adminFragment);
-                        break;
-                }
-                return true;
+            public void run() {
+                navController.navigate(R.id.hallFameFragment);
             }
-        });
+        },4000);
+
     }
 }
