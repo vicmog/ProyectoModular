@@ -40,9 +40,11 @@ public class InicioFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                navController.navigate(R.id.hallFameFragment);
+
+                //si hay datos en shared preferences carga el halloffame ,sinio carga la pantalla de contraseña
+                navController.navigate(R.id.adminPasswordInicioFragment);
             }
-        },4000);
+        },3000);
 
     }
 }

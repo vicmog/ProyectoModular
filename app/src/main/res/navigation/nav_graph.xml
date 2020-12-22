@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_inicioFragment_to_juegoFragment"
             app:destination="@id/juegoFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_adminPasswordInicioFragment"
+            app:destination="@id/adminPasswordInicioFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
@@ -26,25 +29,33 @@
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" >
         <action
-            android:id="@+id/action_adminFragment_to_nuevoJugadorFragment"
-            app:destination="@id/nuevoJugadorFragment" />
-        <action
-            android:id="@+id/action_adminFragment_to_editJugadorFragment"
-            app:destination="@id/editJugadorFragment" />
-        <action
             android:id="@+id/action_adminFragment_to_cartasFragment"
             app:destination="@id/cartasFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_nuevoJugadorFragment"
+            app:destination="@id/nuevoJugadorFragment" />
     </fragment>
     <fragment
         android:id="@+id/nuevoJugadorFragment"
         android:name="com.example.proyectomodular.NuevoJugadorFragment"
         android:label="fragment_nuevo_jugador"
-        tools:layout="@layout/fragment_nuevo_jugador" />
+        tools:layout="@layout/fragment_nuevo_jugador" >
+        <action
+            android:id="@+id/action_nuevoJugadorFragment_to_editJugadorFragment"
+            app:destination="@id/editJugadorFragment" />
+        <action
+            android:id="@+id/action_nuevoJugadorFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editJugadorFragment"
         android:name="com.example.proyectomodular.EditJugadorFragment"
         android:label="fragment_edit_jugador"
-        tools:layout="@layout/fragment_edit_jugador" />
+        tools:layout="@layout/fragment_edit_jugador" >
+        <action
+            android:id="@+id/action_editJugadorFragment_to_nuevoJugadorFragment"
+            app:destination="@id/nuevoJugadorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartasFragment"
         android:name="com.example.proyectomodular.CartasFragment"
@@ -54,26 +65,38 @@
         android:id="@+id/hallFameFragment"
         android:name="com.example.proyectomodular.HallFameFragment"
         android:label="fragment_hall_fame"
-        tools:layout="@layout/fragment_hall_fame" />
+        tools:layout="@layout/fragment_hall_fame" >
+        <action
+            android:id="@+id/action_hallFameFragment_to_puntuacionFragment"
+            app:destination="@id/puntuacionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/juegoFragment"
         android:name="com.example.proyectomodular.JuegoFragment"
         android:label="fragment_juego"
-        tools:layout="@layout/fragment_juego" >
-        <action
-            android:id="@+id/action_juegoFragment_to_puntuacionFragment"
-            app:destination="@id/puntuacionFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_juego" />
     <fragment
         android:id="@+id/puntuacionFragment"
         android:name="com.example.proyectomodular.PuntuacionFragment"
         android:label="fragment_puntuacion"
         tools:layout="@layout/fragment_puntuacion" >
         <action
-            android:id="@+id/action_puntuacionFragment_to_juegoFragment"
-            app:destination="@id/juegoFragment" />
+            android:id="@+id/action_puntuacionFragment_to_hallFameFragment"
+            app:destination="@id/hallFameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminPasswordInicioFragment"
+        android:name="com.example.proyectomodular.AdminPasswordInicioFragment"
+        android:label="fragment_admin_password_inicio"
+        tools:layout="@layout/fragment_admin_password_inicio" >
         <action
-            android:id="@+id/action_puntuacionFragment_to_inicioFragment"
-            app:destination="@id/inicioFragment" />
+            android:id="@+id/action_adminPasswordInicioFragment_to_hallFameFragment"
+            app:destination="@id/hallFameFragment" />
+        <action
+            android:id="@+id/action_adminPasswordInicioFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_adminPasswordInicioFragment_to_juegoFragment"
+            app:destination="@id/juegoFragment" />
     </fragment>
 </navigation>
