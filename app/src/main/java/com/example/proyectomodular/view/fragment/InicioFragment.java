@@ -1,4 +1,4 @@
-package com.example.proyectomodular;
+package com.example.proyectomodular.view.fragment;
 
 import android.os.Bundle;
 
@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectomodular.R;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

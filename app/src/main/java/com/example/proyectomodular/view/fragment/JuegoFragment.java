@@ -1,4 +1,4 @@
-package com.example.proyectomodular;
+package com.example.proyectomodular.view.fragment;
 
 import android.os.Bundle;
 
@@ -13,31 +13,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectomodular.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HallFameFragment extends Fragment {
+
+public class JuegoFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
     private NavController navController;
 
-    public HallFameFragment() {
-        // Required empty public constructor
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hall_fame, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_juego, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bottomNavigationView = view.findViewById(R.id.bottom_navigation_hall);
+
+        bottomNavigationView = view.findViewById(R.id.bottom_navigation_juego);
+
+        bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
         navController = Navigation.findNavController(view);
-
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -1,8 +1,10 @@
-package com.example.proyectomodular;
+package com.example.proyectomodular.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.proyectomodular.R;
 
 public class MainActivity extends AppCompatActivity {
 

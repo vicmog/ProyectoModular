@@ -1,4 +1,4 @@
-package com.example.proyectomodular;
+package com.example.proyectomodular.view.fragment;
 
 import android.os.Bundle;
 
@@ -13,26 +13,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectomodular.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class JuegoFragment extends Fragment {
+public class AdminFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
     private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_juego, container, false);
+
+        return inflater.inflate(R.layout.fragment_admin, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        bottomNavigationView = view.findViewById(R.id.bottom_navigation_juego);
+        bottomNavigationView = view.findViewById(R.id.bottom_navigation_admin);
 
-        bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
+        bottomNavigationView.setSelectedItemId(R.id.adminArea);
         navController = Navigation.findNavController(view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -49,5 +51,6 @@ public class JuegoFragment extends Fragment {
                 return true;
             }
         });
+
     }
 }

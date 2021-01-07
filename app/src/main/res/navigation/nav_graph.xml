@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/inicioFragment"
-        android:name="com.example.proyectomodular.InicioFragment"
+        android:name="com.example.proyectomodular.view.fragment.InicioFragment"
         android:label="fragment_inicio"
         tools:layout="@layout/fragment_inicio" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
-        android:name="com.example.proyectomodular.AdminFragment"
+        android:name="com.example.proyectomodular.view.fragment.AdminFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/nuevoJugadorFragment"
-        android:name="com.example.proyectomodular.NuevoJugadorFragment"
+        android:name="com.example.proyectomodular.view.fragment.NuevoJugadorFragment"
         android:label="fragment_nuevo_jugador"
         tools:layout="@layout/fragment_nuevo_jugador" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/editJugadorFragment"
-        android:name="com.example.proyectomodular.EditJugadorFragment"
+        android:name="com.example.proyectomodular.view.fragment.EditJugadorFragment"
         android:label="fragment_edit_jugador"
         tools:layout="@layout/fragment_edit_jugador" >
         <action
@@ -58,12 +58,12 @@
     </fragment>
     <fragment
         android:id="@+id/cartasFragment"
-        android:name="com.example.proyectomodular.CartasFragment"
+        android:name="com.example.proyectomodular.view.fragment.CartasFragment"
         android:label="fragment_cartas"
         tools:layout="@layout/fragment_cartas" />
     <fragment
         android:id="@+id/hallFameFragment"
-        android:name="com.example.proyectomodular.HallFameFragment"
+        android:name="com.example.proyectomodular.view.fragment.HallFameFragment"
         android:label="fragment_hall_fame"
         tools:layout="@layout/fragment_hall_fame" >
         <action
@@ -72,12 +72,12 @@
     </fragment>
     <fragment
         android:id="@+id/juegoFragment"
-        android:name="com.example.proyectomodular.JuegoFragment"
+        android:name="com.example.proyectomodular.view.fragment.JuegoFragment"
         android:label="fragment_juego"
         tools:layout="@layout/fragment_juego" />
     <fragment
         android:id="@+id/puntuacionFragment"
-        android:name="com.example.proyectomodular.PuntuacionFragment"
+        android:name="com.example.proyectomodular.view.fragment.PuntuacionFragment"
         android:label="fragment_puntuacion"
         tools:layout="@layout/fragment_puntuacion" >
         <action
@@ -86,7 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminPasswordInicioFragment"
-        android:name="com.example.proyectomodular.AdminPasswordInicioFragment"
+        android:name="com.example.proyectomodular.view.fragment.AdminPasswordInicioFragment"
         android:label="fragment_admin_password_inicio"
         tools:layout="@layout/fragment_admin_password_inicio" >
         <action
