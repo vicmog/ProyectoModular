@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.proyectomodular.model.Repository;
 import com.example.proyectomodular.model.room.entity.Carta;
@@ -17,12 +18,21 @@ public class ViewModel extends AndroidViewModel {
 
     private Repository repository;
 
+
     public ViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository(application);
     }
 
-    //USUARIO
+    public Usuario getUsuarioJuegoJugador() {
+        return repository.getUsuarioJuegoJugador();
+    }
+
+    public void setUsuarioJuegoJugador(Usuario usuarioJuegoJugador) {
+        repository.setUsuarioJuegoJugador(usuarioJuegoJugador);
+    }
+
+//USUARIO
 
     public void insertUsuario(Usuario usuario){
         repository.insertUsuario(usuario);

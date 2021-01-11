@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.proyectomodular.model.room.GameDataBase;
 import com.example.proyectomodular.model.room.dao.CartaDao;
@@ -27,6 +28,8 @@ public class Repository {
     private LiveData<List<Usuario>> liveListaUsuarios;
     private LiveData<List<Carta>> liveListaCartas;
 
+    private Usuario usuarioJuegoJugador;
+
     public Repository(Context context){
         db = GameDataBase.getDb(context);
         cartaDao = db.getCartaDao();
@@ -34,7 +37,15 @@ public class Repository {
         usuarioDao = db.getUsuarioDao();
     }
 
-    //USUARIO
+    public Usuario getUsuarioJuegoJugador() {
+        return usuarioJuegoJugador;
+    }
+
+    public void setUsuarioJuegoJugador(Usuario usuarioJuegoJugador) {
+        this.usuarioJuegoJugador = usuarioJuegoJugador;
+    }
+
+//USUARIO
 
     public void insertUsuario(Usuario usuario) {
         ApplicationThread.threadExecutorPool.execute(new Runnable() {

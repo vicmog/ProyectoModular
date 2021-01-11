@@ -41,7 +41,6 @@ public class AdaptadorJugadorJuego extends RecyclerView.Adapter<AdaptadorJugador
         View vista= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_jugador_juego,parent,false);
         miViewModel = new ViewModelProvider((ViewModelStoreOwner) activity).get(ViewModel.class);
         ViewHolder holder = new ViewHolder(vista);
-
         return holder;
     }
 
@@ -49,13 +48,15 @@ public class AdaptadorJugadorJuego extends RecyclerView.Adapter<AdaptadorJugador
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NavController navController = Navigation.findNavController(view);
         holder.tvNombre.setText(usuarios.get(position).getNombre());
-
-
-
-
+        holder.imgImagen.setImageResource(usuarios.get(position).getAvatar());
         holder.parent_layout.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
+            Usuario usuario = usuarios.get(position);
+            miViewModel.setUsuarioJuegoJugador(usuario);
+            navController.navigate(R.id.juegoJugarFragment);
 
             }
         });
@@ -63,7 +64,7 @@ public class AdaptadorJugadorJuego extends RecyclerView.Adapter<AdaptadorJugador
 
     @Override
     public int getItemCount() {
-        return 0;
+        return usuarios.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

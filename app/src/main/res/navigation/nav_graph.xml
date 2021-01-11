@@ -74,7 +74,11 @@
         android:id="@+id/juegoFragment"
         android:name="com.example.proyectomodular.view.fragment.JuegoFragment"
         android:label="fragment_juego"
-        tools:layout="@layout/fragment_juego" />
+        tools:layout="@layout/fragment_juego" >
+        <action
+            android:id="@+id/action_juegoFragment_to_juegoJugarFragment"
+            app:destination="@id/juegoJugarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/puntuacionFragment"
         android:name="com.example.proyectomodular.view.fragment.PuntuacionFragment"
@@ -99,4 +103,9 @@
             android:id="@+id/action_adminPasswordInicioFragment_to_juegoFragment"
             app:destination="@id/juegoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/juegoJugarFragment"
+        android:name="com.example.proyectomodular.view.fragment.JuegoJugarFragment"
+        android:label="fragment_juego_jugar"
+        tools:layout="@layout/fragment_juego_jugar" />
 </navigation>
