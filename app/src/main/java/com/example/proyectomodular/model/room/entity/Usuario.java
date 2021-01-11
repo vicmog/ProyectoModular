@@ -19,7 +19,7 @@ public class Usuario {
 
     @NonNull
     @ColumnInfo(name = "avatar")
-    private Drawable avatar;
+    private int avatar;
 
     @NonNull
     @ColumnInfo(name = "nRespuestas")
@@ -29,7 +29,7 @@ public class Usuario {
     @ColumnInfo(name = "nRespuestasCorrectas")
     private  int nRespuestasCorrectas;
 
-    public Usuario(@NonNull String nombre, @NonNull Drawable avatar, int nRespuestas, int nRespuestasCorrectas) {
+    public Usuario(@NonNull String nombre, @NonNull int avatar, int nRespuestas, int nRespuestasCorrectas) {
         this.nombre = nombre;
         this.avatar = avatar;
         this.nRespuestas = nRespuestas;
@@ -54,11 +54,11 @@ public class Usuario {
     }
 
     @NonNull
-    public Drawable getAvatar() {
+    public int getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(@NonNull Drawable avatar) {
+    public void setAvatar(@NonNull int avatar) {
         this.avatar = avatar;
     }
 
