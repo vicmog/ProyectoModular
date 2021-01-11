@@ -1,5 +1,7 @@
 package com.example.proyectomodular.model.room.entity;
 
+import android.graphics.drawable.Drawable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -17,7 +19,7 @@ public class Usuario {
 
     @NonNull
     @ColumnInfo(name = "avatar")
-    private String avatar;
+    private int avatar;
 
     @NonNull
     @ColumnInfo(name = "nRespuestas")
@@ -27,7 +29,7 @@ public class Usuario {
     @ColumnInfo(name = "nRespuestasCorrectas")
     private  int nRespuestasCorrectas;
 
-    public Usuario(@NonNull String nombre, @NonNull String avatar, int nRespuestas, int nRespuestasCorrectas) {
+    public Usuario(@NonNull String nombre, @NonNull int avatar, int nRespuestas, int nRespuestasCorrectas) {
         this.nombre = nombre;
         this.avatar = avatar;
         this.nRespuestas = nRespuestas;
@@ -52,11 +54,11 @@ public class Usuario {
     }
 
     @NonNull
-    public String getAvatar() {
+    public int getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(@NonNull String avatar) {
+    public void setAvatar(@NonNull int avatar) {
         this.avatar = avatar;
     }
 
