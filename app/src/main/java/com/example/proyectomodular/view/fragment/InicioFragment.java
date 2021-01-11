@@ -1,5 +1,6 @@
 package com.example.proyectomodular.view.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +26,8 @@ public class InicioFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
     private NavController navController;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_inicio, container, false);
@@ -37,12 +41,13 @@ public class InicioFragment extends Fragment {
     }
 
     private void init() {
+
+
         navController = Navigation.findNavController(getView());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                //si hay datos en shared preferences carga el halloffame ,sinio carga la pantalla de contraseña
                 navController.navigate(R.id.adminPasswordInicioFragment);
             }
         },3000);
