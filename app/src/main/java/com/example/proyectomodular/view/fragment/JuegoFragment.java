@@ -5,8 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.proyectomodular.R;
+import com.example.proyectomodular.viewmodel.ViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -21,6 +24,7 @@ public class JuegoFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
     private NavController navController;
+    private ViewModel miViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -32,6 +36,8 @@ public class JuegoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         bottomNavigationView = view.findViewById(R.id.bottom_navigation_juego);
+
+        miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
 
         bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
         navController = Navigation.findNavController(view);
@@ -50,5 +56,11 @@ public class JuegoFragment extends Fragment {
                 return true;
             }
         });
+
+        RecyclerView recyclerViewJuego = new RecyclerView(getActivity());
+
+
+
+
     }
 }
