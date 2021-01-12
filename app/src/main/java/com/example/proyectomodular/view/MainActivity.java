@@ -18,4 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         int i = 0;
     }
+
+    int i=0;
 }
