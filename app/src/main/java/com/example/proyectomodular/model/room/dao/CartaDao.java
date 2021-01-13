@@ -27,4 +27,10 @@ public interface CartaDao {
     @Query("select * from carta order by id")
     LiveData<List<Carta>> getAll();
 
+    @Query("select count(carta.id) from carta")
+    long getNumeroCartas();
+
+    @Query("select * from carta where carta.id = :id")
+    Carta get(long id);
+
 }

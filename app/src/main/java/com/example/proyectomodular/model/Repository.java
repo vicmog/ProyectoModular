@@ -1,5 +1,6 @@
 package com.example.proyectomodular.model;
 
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
@@ -25,8 +26,12 @@ public class Repository {
     private PreguntaDao preguntaDao;
     private UsuarioDao usuarioDao;
 
+    private int idCartaAnteriorJugada = -1;
+
     private LiveData<List<Usuario>> liveListaUsuarios;
     private LiveData<List<Carta>> liveListaCartas;
+    private MutableLiveData<Long> numeroCartasDisponibles = new MutableLiveData<>();
+    private MutableLiveData<Carta>cartaAleatoria = new MutableLiveData<>();
 
     private Usuario usuarioJuegoJugador;
 
@@ -37,6 +42,14 @@ public class Repository {
         usuarioDao = db.getUsuarioDao();
     }
 
+    public int getIdCartaAnteriorJugada() {
+        return idCartaAnteriorJugada;
+    }
+
+    public void setIdCartaAnteriorJugada(int idCartaAnteriorJugada) {
+        this.idCartaAnteriorJugada = idCartaAnteriorJugada;
+    }
+
     public Usuario getUsuarioJuegoJugador() {
         return usuarioJuegoJugador;
     }
@@ -44,6 +57,31 @@ public class Repository {
     public void setUsuarioJuegoJugador(Usuario usuarioJuegoJugador) {
         this.usuarioJuegoJugador = usuarioJuegoJugador;
     }
+
+    public MutableLiveData<Long> getNumeroCartasDisponibles() {
+        return numeroCartasDisponibles;
+    }
+
+    public MutableLiveData<Carta> getCartaAleatoria() {
+        return cartaAleatoria;
+    }
+
+    public void getNumeroCartas(){
+        ApplicationThread.threadExecutorPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                   long num = cartaDao.getNumeroCartas();
+
+                   numeroCartasDisponibles.postValue(num);
+                } catch (Exception e) {
+                    //numeroCartasDisponibles.postValue(0);
+                }
+            }
+        });
+    }
+
+
 
 //USUARIO
 
@@ -101,6 +139,21 @@ public class Repository {
                     cartaDao.insert(carta);
                 } catch (Exception e) {
                     Log.v("insertCarta", e.toString());
+                }
+            }
+        });
+    }
+
+    public void getCarta(long id) {
+        ApplicationThread.threadExecutorPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Carta carta = cartaDao.get(id);
+                    cartaAleatoria.postValue(carta);
+
+                } catch (Exception e) {
+
                 }
             }
         });

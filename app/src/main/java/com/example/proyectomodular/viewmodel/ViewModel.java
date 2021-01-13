@@ -32,7 +32,31 @@ public class ViewModel extends AndroidViewModel {
         repository.setUsuarioJuegoJugador(usuarioJuegoJugador);
     }
 
-//USUARIO
+    public MutableLiveData<Long> getNumeroCartasDisponibles() {
+        return repository.getNumeroCartasDisponibles();
+    }
+
+    public void getNumeroCartas() {
+        repository.getNumeroCartas();
+    }
+
+    public int getIdCartaAnteriorJugada() {
+        return repository.getIdCartaAnteriorJugada();
+    }
+
+    public void setIdCartaAnteriorJugada(int idCartaAnteriorJugada) {
+        repository.setIdCartaAnteriorJugada(idCartaAnteriorJugada);
+    }
+
+    public MutableLiveData<Carta> getCartaAleatoria() {
+        return repository.getCartaAleatoria();
+    }
+
+    public void getCarta(long id) {
+        repository.getCarta(id);
+    }
+
+    //USUARIO
 
     public void insertUsuario(Usuario usuario){
         repository.insertUsuario(usuario);
