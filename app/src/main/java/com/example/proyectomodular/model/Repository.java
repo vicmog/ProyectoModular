@@ -26,12 +26,12 @@ public class Repository {
     private PreguntaDao preguntaDao;
     private UsuarioDao usuarioDao;
 
-    private int idCartaAnteriorJugada = -1;
 
     private LiveData<List<Usuario>> liveListaUsuarios;
     private LiveData<List<Carta>> liveListaCartas;
-    private MutableLiveData<Long> numeroCartasDisponibles = new MutableLiveData<>();
+    private LiveData<List<Pregunta>>liveListaPreguntas ;
     private MutableLiveData<Carta>cartaAleatoria = new MutableLiveData<>();
+    private int puntuacionPartidaActual;
 
     private Usuario usuarioJuegoJugador;
 
@@ -42,13 +42,6 @@ public class Repository {
         usuarioDao = db.getUsuarioDao();
     }
 
-    public int getIdCartaAnteriorJugada() {
-        return idCartaAnteriorJugada;
-    }
-
-    public void setIdCartaAnteriorJugada(int idCartaAnteriorJugada) {
-        this.idCartaAnteriorJugada = idCartaAnteriorJugada;
-    }
 
     public Usuario getUsuarioJuegoJugador() {
         return usuarioJuegoJugador;
@@ -58,28 +51,19 @@ public class Repository {
         this.usuarioJuegoJugador = usuarioJuegoJugador;
     }
 
-    public MutableLiveData<Long> getNumeroCartasDisponibles() {
-        return numeroCartasDisponibles;
+    public int getPuntuacionPartidaActual() {
+        return puntuacionPartidaActual;
+    }
+
+    public void setPuntuacionPartidaActual(int puntuacionPartidaActual) {
+        this.puntuacionPartidaActual = puntuacionPartidaActual;
     }
 
     public MutableLiveData<Carta> getCartaAleatoria() {
         return cartaAleatoria;
     }
 
-    public void getNumeroCartas(){
-        ApplicationThread.threadExecutorPool.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                   long num = cartaDao.getNumeroCartas();
 
-                   numeroCartasDisponibles.postValue(num);
-                } catch (Exception e) {
-                    //numeroCartasDisponibles.postValue(0);
-                }
-            }
-        });
-    }
 
 
 
@@ -144,12 +128,14 @@ public class Repository {
         });
     }
 
-    public void getCarta(long id) {
+    public void getCarta() {
         ApplicationThread.threadExecutorPool.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Carta carta = cartaDao.get(id);
+                    Carta carta = cartaDao.getCartaAleatoria();
+
+
                     cartaAleatoria.postValue(carta);
 
                 } catch (Exception e) {
@@ -229,5 +215,16 @@ public class Repository {
                 }
             }
         });
+    }
+
+    public LiveData<List<Pregunta>> getAllPreguntas(long id){
+        try {
+            liveListaPreguntas = preguntaDao.getAll(id);
+            Log.v("ZZZ",liveListaPreguntas.getValue().toString());
+        }catch (Exception exception){
+
+        }
+
+        return liveListaPreguntas;
     }
 }

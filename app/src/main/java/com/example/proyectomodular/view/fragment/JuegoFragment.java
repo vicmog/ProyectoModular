@@ -54,7 +54,7 @@ public class JuegoFragment extends Fragment {
 
 
 
-        miViewModel.insertUsuario(new Usuario("Pepe",R.drawable.profile1,1,1));
+       // miViewModel.insertUsuario(new Usuario("Pepe",R.drawable.profile1,1,1));
 
         bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
         navController = Navigation.findNavController(view);

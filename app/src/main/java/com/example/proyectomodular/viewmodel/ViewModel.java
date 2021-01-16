@@ -32,28 +32,18 @@ public class ViewModel extends AndroidViewModel {
         repository.setUsuarioJuegoJugador(usuarioJuegoJugador);
     }
 
-    public MutableLiveData<Long> getNumeroCartasDisponibles() {
-        return repository.getNumeroCartasDisponibles();
-    }
 
-    public void getNumeroCartas() {
-        repository.getNumeroCartas();
-    }
 
-    public int getIdCartaAnteriorJugada() {
-        return repository.getIdCartaAnteriorJugada();
-    }
 
-    public void setIdCartaAnteriorJugada(int idCartaAnteriorJugada) {
-        repository.setIdCartaAnteriorJugada(idCartaAnteriorJugada);
-    }
+
+
 
     public MutableLiveData<Carta> getCartaAleatoria() {
         return repository.getCartaAleatoria();
     }
 
-    public void getCarta(long id) {
-        repository.getCarta(id);
+    public void getCarta() {
+        repository.getCarta();
     }
 
     //USUARIO
@@ -104,5 +94,17 @@ public class ViewModel extends AndroidViewModel {
 
     public void deletePregunta(Pregunta pregunta){
         repository.deletePregunta(pregunta);
+    }
+
+    public LiveData<List<Pregunta>> getAllPreguntas(long id) {
+        return repository.getAllPreguntas(id);
+    }
+
+    public int getPuntuacionPartidaActual() {
+        return repository.getPuntuacionPartidaActual();
+    }
+
+    public void setPuntuacionPartidaActual(int puntuacionPartidaActual) {
+        repository.setPuntuacionPartidaActual(puntuacionPartidaActual);
     }
 }
