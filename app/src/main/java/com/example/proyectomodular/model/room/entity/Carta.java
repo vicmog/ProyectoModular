@@ -13,7 +13,7 @@ public class Carta {
 
     @NonNull
     @ColumnInfo(name = "urlFoto")
-    private int urlFoto;
+    private String urlFoto;
 
     @NonNull
     @ColumnInfo(name = "nombreAnimal")
@@ -26,7 +26,7 @@ public class Carta {
     public Carta() {
     }
 
-    public Carta(@NonNull int urlFoto, @NonNull String nombreAnimal, @NonNull String descripcion) {
+    public Carta(@NonNull String urlFoto, @NonNull String nombreAnimal, @NonNull String descripcion) {
         this.urlFoto = urlFoto;
         this.nombreAnimal = nombreAnimal;
         this.descripcion = descripcion;
@@ -41,11 +41,11 @@ public class Carta {
     }
 
     @NonNull
-    public int getUrlFoto() {
+    public String getUrlFoto() {
         return urlFoto;
     }
 
-    public void setUrlFoto(@NonNull int urlFoto) {
+    public void setUrlFoto(@NonNull String urlFoto) {
         this.urlFoto = urlFoto;
     }
 

@@ -29,12 +29,14 @@ public class AdaptadorPreguntasJuego extends RecyclerView.Adapter<AdaptadorPregu
 private List<Pregunta>preguntas;
 private View vista;
 private String texto;
+private Activity activity;
 private ViewModel miViewModel;
 
     public AdaptadorPreguntasJuego(List<Pregunta> preguntas, View vista, Activity act) {
         this.preguntas = preguntas;
         this.vista = vista;
-        miViewModel = new ViewModelProvider((ViewModelStoreOwner) act).get(ViewModel.class);
+        this.activity = act;
+
 
     }
 
@@ -42,6 +44,7 @@ private ViewModel miViewModel;
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_preguntas_juegos,parent,false);
+        miViewModel = new ViewModelProvider((ViewModelStoreOwner) activity).get(ViewModel.class);
         ViewHolder holder = new ViewHolder(vista);
         return holder;
     }

@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.proyectomodular.R;
 import com.example.proyectomodular.model.room.entity.Carta;
 import com.example.proyectomodular.model.room.entity.Pregunta;
@@ -39,7 +40,7 @@ public class JuegoJugarFragment extends Fragment {
     private ViewModel miViewModel;
     private NavController navController;
     private List<Pregunta> preguntas = new ArrayList<>();
-    private FloatingActionButton btSiguiente;
+    private FloatingActionButton btSiguiente,btCancelar;
     private RecyclerView recyclerPreguntas;
 
 
@@ -77,15 +78,24 @@ public class JuegoJugarFragment extends Fragment {
             }
         });
 
+        btCancelar = getView().findViewById(R.id.btCancelarJuego);
+        btCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.juegoFragment);
 
-        /*miViewModel.insertCarta(new Carta(R.drawable.profile1, "perro", "descripcion"));
-        miViewModel.insertCarta(new Carta(R.drawable.profile1, "gato", "poi"));
-        miViewModel.insertPregunta(new Pregunta(1,"hola??","si","si","alomejor","no","puede"));
-        miViewModel.insertPregunta(new Pregunta(1,"holaaaaaaaaa??","si","si","alomejor","no","puede"));
-        miViewModel.insertPregunta(new Pregunta(1,"holaaaaaaaaaaaaaaaaa??","si","si","alomejor","no","puede"));
-        miViewModel.insertPregunta(new Pregunta(2,"adios??","si","si","alomejor","no","puede"));
-        miViewModel.insertPregunta(new Pregunta(2,"adiosssss??","si","si","alomejor","no","puede"));
-        miViewModel.insertPregunta(new Pregunta(2,"adiossssssssssssssss?","si","si","alomejor","no","puede"));*/
+            }
+        });
+
+
+       /* miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/_107435681_perro1.jpg", "perro", "perro grande marron y vive en barcelona"));
+        miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg", "gato", "gato pequeño y gris y vive en granada"));
+        miViewModel.insertPregunta(new Pregunta(1,"¿De que color es?","marron","gris","verde","marron","azul"));
+        miViewModel.insertPregunta(new Pregunta(1,"¿Como es su tamaño?","grande","grande","enorme","pequeño","mediano"));
+        miViewModel.insertPregunta(new Pregunta(1,"¿Donde vive?","barcelona","Madrid","Granada","Malaga","Barcelona"));
+        miViewModel.insertPregunta(new Pregunta(2,"¿De que color es?","gris","verde","marron","rosa","gris"));
+        miViewModel.insertPregunta(new Pregunta(2,"¿Como es su tamaño?","pequeño","muy pequeño","pequeño","grande","muy grande"));
+        miViewModel.insertPregunta(new Pregunta(2,"¿Donde vive?","granada","Granada","Sevilla","Huelva","Cadiz"));*/
 
 
         miViewModel.getCarta();
@@ -94,7 +104,7 @@ public class JuegoJugarFragment extends Fragment {
             public void onChanged(Carta carta) {
                 tvNombreCarta.setText(carta.getNombreAnimal());
                 tvDescripcionCarta.setText(carta.getDescripcion());
-                imgCarta.setImageResource(carta.getUrlFoto());
+                Glide.with(getActivity()).load(carta.getUrlFoto()).into(imgCarta);
                 obtenerPreguntas(carta.getId());
 
             }
