@@ -27,6 +27,9 @@ public class Usuario {
     @ColumnInfo(name = "nRespuestasCorrectas")
     private  int nRespuestasCorrectas;
 
+    public Usuario() {
+    }
+
     public Usuario(@NonNull String nombre, @NonNull int avatar, int nRespuestas, int nRespuestasCorrectas) {
         this.nombre = nombre;
         this.avatar = avatar;

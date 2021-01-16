@@ -51,6 +51,8 @@ public class JuegoFragment extends Fragment {
         bottomNavigationView = view.findViewById(R.id.bottom_navigation_juego);
         miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
         usuarios = new ArrayList<>();
+        miViewModel.setPuntuacionPartidaActual(0);
+        miViewModel.setUsuarioJuegoJugador(new Usuario());
 
 
 

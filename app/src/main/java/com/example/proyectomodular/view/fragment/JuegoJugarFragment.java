@@ -87,7 +87,7 @@ public class JuegoJugarFragment extends Fragment {
             }
         });
 
-
+        //java.lang.NullPointerException: You cannot start a load on a not yet attached View or a Fragment where getActivity() returns null (which usually occurs when getActivity() is called before the Fragment is attached or after the Fragment is destroyed).
        /* miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/_107435681_perro1.jpg", "perro", "perro grande marron y vive en barcelona"));
         miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg", "gato", "gato pequeño y gris y vive en granada"));
         miViewModel.insertPregunta(new Pregunta(1,"¿De que color es?","marron","gris","verde","marron","azul"));
