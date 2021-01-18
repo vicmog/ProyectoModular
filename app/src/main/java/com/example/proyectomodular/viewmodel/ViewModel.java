@@ -107,4 +107,12 @@ public class ViewModel extends AndroidViewModel {
     public void setPuntuacionPartidaActual(int puntuacionPartidaActual) {
         repository.setPuntuacionPartidaActual(puntuacionPartidaActual);
     }
+
+    public int getNumeroRespuestasTotales() {
+        return repository.getNumeroRespuestasTotales();
+    }
+
+    public void setNumeroRespuestasTotales(int numeroRespuestasTotales) {
+        repository.setNumeroRespuestasTotales(numeroRespuestasTotales);
+    }
 }

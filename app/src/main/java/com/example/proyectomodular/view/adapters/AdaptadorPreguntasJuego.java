@@ -58,6 +58,7 @@ private ViewModel miViewModel;
     holder.bt2.setText(preguntas.get(position).getOpcion2());
     holder.bt3.setText(preguntas.get(position).getOpcion3());
     holder.bt4.setText(preguntas.get(position).getOpcion4());
+    miViewModel.setNumeroRespuestasTotales(preguntas.size());
 
 
 
@@ -118,6 +119,7 @@ private ViewModel miViewModel;
                 texto = holder.bt4.getText().toString();
                 if(texto.compareToIgnoreCase(preguntas.get(position).getRespuesta())==0){
                     miViewModel.setPuntuacionPartidaActual(miViewModel.getPuntuacionPartidaActual()+1);
+
                 }
             }
         });
@@ -129,6 +131,7 @@ private ViewModel miViewModel;
 
     @Override
     public int getItemCount() {
+
         return preguntas.size();
     }
 

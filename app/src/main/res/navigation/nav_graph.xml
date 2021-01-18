@@ -107,5 +107,21 @@
         android:id="@+id/juegoJugarFragment"
         android:name="com.example.proyectomodular.view.fragment.JuegoJugarFragment"
         android:label="fragment_juego_jugar"
-        tools:layout="@layout/fragment_juego_jugar" />
+        tools:layout="@layout/fragment_juego_jugar" >
+        <action
+            android:id="@+id/action_juegoJugarFragment_to_mostrarPuntuacionFragment"
+            app:destination="@id/mostrarPuntuacionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarPuntuacionFragment"
+        android:name="com.example.proyectomodular.view.fragment.MostrarPuntuacionFragment"
+        android:label="fragment_mostrar_puntuacion"
+        tools:layout="@layout/fragment_mostrar_puntuacion" >
+        <action
+            android:id="@+id/action_mostrarPuntuacionFragment_to_juegoJugarFragment"
+            app:destination="@id/juegoJugarFragment" />
+        <action
+            android:id="@+id/action_mostrarPuntuacionFragment_to_juegoFragment"
+            app:destination="@id/juegoFragment" />
+    </fragment>
 </navigation>

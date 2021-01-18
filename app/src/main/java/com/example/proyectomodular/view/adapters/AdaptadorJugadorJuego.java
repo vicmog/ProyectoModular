@@ -47,7 +47,7 @@ public class AdaptadorJugadorJuego extends RecyclerView.Adapter<AdaptadorJugador
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //Log.v("ZZZ",usuarios.toString());
+        
         NavController navController = Navigation.findNavController(view);
         holder.tvNombre.setText(usuarios.get(position).getNombre());
         holder.imgImagen.setImageResource(usuarios.get(position).getAvatar());

@@ -1,5 +1,6 @@
 package com.example.proyectomodular.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,6 +58,7 @@ public class JuegoJugarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
         miViewModel.setPuntuacionPartidaActual(0);
+        miViewModel.setNumeroRespuestasTotales(0);
 
         navController = Navigation.findNavController(getView());
 
@@ -74,7 +78,17 @@ public class JuegoJugarFragment extends Fragment {
         btSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("ZZZ",miViewModel.getPuntuacionPartidaActual()+"");
+
+                Usuario usuarioPartida = miViewModel.getUsuarioJuegoJugador();
+                int respuestasCorrectas = miViewModel.getPuntuacionPartidaActual() ;
+                Log.v("ZZZ",respuestasCorrectas+"correctas");
+                Log.v("ZZZ",miViewModel.getNumeroRespuestasTotales()+"totales");
+                usuarioPartida.setNRespuestasCorrectas(usuarioPartida.getNRespuestasCorrectas()+ respuestasCorrectas);
+                usuarioPartida.setNRespuestas(usuarioPartida.getNRespuestas() + miViewModel.getNumeroRespuestasTotales());
+
+                miViewModel.updateUsuario(usuarioPartida);
+                navController.navigate(R.id.mostrarPuntuacionFragment);
+
             }
         });
 
@@ -82,13 +96,14 @@ public class JuegoJugarFragment extends Fragment {
         btCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 navController.navigate(R.id.juegoFragment);
 
             }
         });
 
         //java.lang.NullPointerException: You cannot start a load on a not yet attached View or a Fragment where getActivity() returns null (which usually occurs when getActivity() is called before the Fragment is attached or after the Fragment is destroyed).
-       /* miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/_107435681_perro1.jpg", "perro", "perro grande marron y vive en barcelona"));
+        /*miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/_107435681_perro1.jpg", "perro", "perro grande marron y vive en barcelona"));
         miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg", "gato", "gato pequeño y gris y vive en granada"));
         miViewModel.insertPregunta(new Pregunta(1,"¿De que color es?","marron","gris","verde","marron","azul"));
         miViewModel.insertPregunta(new Pregunta(1,"¿Como es su tamaño?","grande","grande","enorme","pequeño","mediano"));
@@ -104,8 +119,13 @@ public class JuegoJugarFragment extends Fragment {
             public void onChanged(Carta carta) {
                 tvNombreCarta.setText(carta.getNombreAnimal());
                 tvDescripcionCarta.setText(carta.getDescripcion());
-                Glide.with(getActivity()).load(carta.getUrlFoto()).into(imgCarta);
-                obtenerPreguntas(carta.getId());
+
+                if(getActivity()!=null){
+                    Glide.with(getActivity()).load(carta.getUrlFoto()).into(imgCarta);
+                    obtenerPreguntas(carta.getId());
+                }
+
+
 
             }
         });

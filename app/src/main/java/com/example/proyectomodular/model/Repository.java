@@ -32,6 +32,7 @@ public class Repository {
     private LiveData<List<Pregunta>>liveListaPreguntas ;
     private MutableLiveData<Carta>cartaAleatoria = new MutableLiveData<>();
     private int puntuacionPartidaActual;
+    private int numeroRespuestasTotales;
 
     private Usuario usuarioJuegoJugador;
 
@@ -49,6 +50,14 @@ public class Repository {
 
     public void setUsuarioJuegoJugador(Usuario usuarioJuegoJugador) {
         this.usuarioJuegoJugador = usuarioJuegoJugador;
+    }
+
+    public int getNumeroRespuestasTotales() {
+        return numeroRespuestasTotales;
+    }
+
+    public void setNumeroRespuestasTotales(int numeroRespuestasTotales) {
+        this.numeroRespuestasTotales = numeroRespuestasTotales;
     }
 
     public int getPuntuacionPartidaActual() {
