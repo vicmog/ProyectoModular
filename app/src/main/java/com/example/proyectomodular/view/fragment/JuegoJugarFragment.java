@@ -97,7 +97,8 @@ public class JuegoJugarFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                navController.navigate(R.id.juegoFragment);
+                //navController.navigate(R.id.juegoFragment);
+                navController.popBackStack();
 
             }
         });
