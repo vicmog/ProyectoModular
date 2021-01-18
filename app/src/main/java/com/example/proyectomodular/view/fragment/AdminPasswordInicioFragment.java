@@ -60,7 +60,7 @@ private SharedPreferences.Editor editor;
 
             }
         });
-        //POSIBLE METODO
+
         String posibleClave = spPasswordAdmin.getString(KEY,"");
         if(posibleClave.length() != 0 ){
             navController.navigate(R.id.hallFameFragment);

@@ -2,4 +2,9 @@
     <string name="app_name">ProyectoModular</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_introduce_pass_admin">Introduce una clave de administracion</string>
+    <string name="str_entrar_admin">Entrar</string>
+    <string name="str_salir_admin">Salir</string>
+    <string name="str_hint_password">Password</string>
+    <string name="str_hint_retry_pass">Retry Password</string>
 </resources>

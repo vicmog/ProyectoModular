@@ -11,9 +11,6 @@
         android:label="fragment_inicio"
         tools:layout="@layout/fragment_inicio" >
         <action
-            android:id="@+id/action_inicioFragment_to_adminFragment"
-            app:destination="@id/adminFragment" />
-        <action
             android:id="@+id/action_inicioFragment_to_hallFameFragment"
             app:destination="@id/hallFameFragment" />
         <action
@@ -22,6 +19,9 @@
         <action
             android:id="@+id/action_inicioFragment_to_adminPasswordInicioFragment"
             app:destination="@id/adminPasswordInicioFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_adminPassFragment"
+            app:destination="@id/adminPassFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
@@ -98,5 +98,17 @@
         <action
             android:id="@+id/action_adminPasswordInicioFragment_to_juegoFragment"
             app:destination="@id/juegoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminPassFragment"
+        android:name="com.example.proyectomodular.view.fragment.AdminPassFragment"
+        android:label="fragment_admin_pass"
+        tools:layout="@layout/fragment_admin_pass" >
+        <action
+            android:id="@+id/action_adminPassFragment_to_inicioFragment"
+            app:destination="@id/inicioFragment" />
+        <action
+            android:id="@+id/action_adminPassFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
 </navigation>

@@ -44,7 +44,7 @@ public class JuegoFragment extends Fragment {
                         break;
                     case R.id.jugarPartida:navController.navigate(R.id.juegoFragment);
                         break;
-                    case R.id.adminArea:navController.navigate(R.id.adminFragment);
+                    case R.id.adminArea:navController.navigate(R.id.adminPassFragment);
                         break;
                 }
                 return true;
