@@ -38,7 +38,7 @@ import java.util.List;
 
 public class JuegoJugarFragment extends Fragment {
 
-    private TextView tvNombreJugador, tvScoreJugador, tvNombreCarta, tvDescripcionCarta,tvPreguntaJuego;
+    private TextView tvNombreJugador, tvScoreJugador, tvNombreCarta, tvDescripcionCarta;
     private ImageView imgCarta;
     private ViewModel miViewModel;
     private NavController navController;
@@ -81,8 +81,7 @@ public class JuegoJugarFragment extends Fragment {
 
                 Usuario usuarioPartida = miViewModel.getUsuarioJuegoJugador();
                 int respuestasCorrectas = miViewModel.getPuntuacionPartidaActual() ;
-                Log.v("ZZZ",respuestasCorrectas+"correctas");
-                Log.v("ZZZ",miViewModel.getNumeroRespuestasTotales()+"totales");
+
                 usuarioPartida.setNRespuestasCorrectas(usuarioPartida.getNRespuestasCorrectas()+ respuestasCorrectas);
                 usuarioPartida.setNRespuestas(usuarioPartida.getNRespuestas() + miViewModel.getNumeroRespuestasTotales());
 
@@ -97,22 +96,11 @@ public class JuegoJugarFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //navController.navigate(R.id.juegoFragment);
+
                 navController.popBackStack();
 
             }
         });
-
-        //java.lang.NullPointerException: You cannot start a load on a not yet attached View or a Fragment where getActivity() returns null (which usually occurs when getActivity() is called before the Fragment is attached or after the Fragment is destroyed).
-        /*miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/_107435681_perro1.jpg", "perro", "perro grande marron y vive en barcelona"));
-        miViewModel.insertCarta(new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg", "gato", "gato pequeño y gris y vive en granada"));
-        miViewModel.insertPregunta(new Pregunta(1,"¿De que color es?","marron","gris","verde","marron","azul"));
-        miViewModel.insertPregunta(new Pregunta(1,"¿Como es su tamaño?","grande","grande","enorme","pequeño","mediano"));
-        miViewModel.insertPregunta(new Pregunta(1,"¿Donde vive?","barcelona","Madrid","Granada","Malaga","Barcelona"));
-        miViewModel.insertPregunta(new Pregunta(2,"¿De que color es?","gris","verde","marron","rosa","gris"));
-        miViewModel.insertPregunta(new Pregunta(2,"¿Como es su tamaño?","pequeño","muy pequeño","pequeño","grande","muy grande"));
-        miViewModel.insertPregunta(new Pregunta(2,"¿Donde vive?","granada","Granada","Sevilla","Huelva","Cadiz"));*/
-
 
         miViewModel.getCarta();
         miViewModel.getCartaAleatoria().observe(getActivity(), new Observer<Carta>() {

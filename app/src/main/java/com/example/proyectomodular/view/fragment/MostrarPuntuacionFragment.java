@@ -48,7 +48,7 @@ public class MostrarPuntuacionFragment extends Fragment {
         tvPuntuacioJugador = getView().findViewById(R.id.tvPuntuacionJugador);
         tvPuntuacionTotal = getView().findViewById(R.id.tvPuntuacionTotal);
 
-        tvTexto.setText("Tu puntuacion ha sido :");
+        tvTexto.setText(R.string.str_puntuacion_resultado);
         tvPuntuacioJugador.setText(miViewModel.getPuntuacionPartidaActual()+"");
         tvPuntuacionTotal.setText(miViewModel.getNumeroRespuestasTotales()+"");
 
@@ -58,14 +58,15 @@ public class MostrarPuntuacionFragment extends Fragment {
         btJugarOtra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.juegoJugarFragment);
+
+                navController.popBackStack(R.id.juegoJugarFragment,false);
             }
         });
         btSalir = getView().findViewById(R.id.btSalirJuegoPuntuacion);
         btSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.juegoFragment);
+                navController.popBackStack(R.id.juegoFragment,false);
             }
         });
     }

@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="str_juego_elige">Elige un Jugador para comenzar a jugar</string>
+    <string name="str_puntuacion_resultado">Tu puntuacion ha sido :</string>
 </resources>
