@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.proyectomodular.model.Repository;
 import com.example.proyectomodular.model.room.entity.Carta;
@@ -17,9 +18,32 @@ public class ViewModel extends AndroidViewModel {
 
     private Repository repository;
 
+
     public ViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository(application);
+    }
+
+    public Usuario getUsuarioJuegoJugador() {
+        return repository.getUsuarioJuegoJugador();
+    }
+
+    public void setUsuarioJuegoJugador(Usuario usuarioJuegoJugador) {
+        repository.setUsuarioJuegoJugador(usuarioJuegoJugador);
+    }
+
+
+
+
+
+
+
+    public MutableLiveData<Carta> getCartaAleatoria() {
+        return repository.getCartaAleatoria();
+    }
+
+    public void getCarta() {
+        repository.getCarta();
     }
 
     //USUARIO
@@ -70,5 +94,25 @@ public class ViewModel extends AndroidViewModel {
 
     public void deletePregunta(Pregunta pregunta){
         repository.deletePregunta(pregunta);
+    }
+
+    public LiveData<List<Pregunta>> getAllPreguntas(long id) {
+        return repository.getAllPreguntas(id);
+    }
+
+    public int getPuntuacionPartidaActual() {
+        return repository.getPuntuacionPartidaActual();
+    }
+
+    public void setPuntuacionPartidaActual(int puntuacionPartidaActual) {
+        repository.setPuntuacionPartidaActual(puntuacionPartidaActual);
+    }
+
+    public int getNumeroRespuestasTotales() {
+        return repository.getNumeroRespuestasTotales();
+    }
+
+    public void setNumeroRespuestasTotales(int numeroRespuestasTotales) {
+        repository.setNumeroRespuestasTotales(numeroRespuestasTotales);
     }
 }

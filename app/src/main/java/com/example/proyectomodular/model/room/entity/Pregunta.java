@@ -6,6 +6,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+
 @Entity(tableName = "pregunta",foreignKeys = @ForeignKey(
         entity = Carta.class,
         parentColumns = "id",
@@ -28,10 +30,31 @@ public class Pregunta {
     @ColumnInfo(name = "respuesta")
     private String respuesta;
 
-    public Pregunta(long idCarta, @NonNull String pregunta, @NonNull String respuesta) {
+    @NonNull
+    @ColumnInfo(name = "opcion1")
+    private String opcion1;
+
+    @NonNull
+    @ColumnInfo(name = "opcion2")
+    private String opcion2;
+
+    @NonNull
+    @ColumnInfo(name = "opcion3")
+    private String opcion3;
+
+    @NonNull
+    @ColumnInfo(name = "opcion4")
+    private String opcion4;
+
+    public Pregunta(long idCarta, @NonNull String pregunta, @NonNull String respuesta, @NonNull String opcion1, @NonNull String opcion2, @NonNull String opcion3, @NonNull String opcion4) {
+
         this.idCarta = idCarta;
         this.pregunta = pregunta;
         this.respuesta = respuesta;
+        this.opcion1 = opcion1;
+        this.opcion2 = opcion2;
+        this.opcion3 = opcion3;
+        this.opcion4 = opcion4;
     }
 
     public long getId() {
@@ -66,6 +89,42 @@ public class Pregunta {
 
     public void setRespuesta(@NonNull String respuesta) {
         this.respuesta = respuesta;
+    }
+
+    @NonNull
+    public String getOpcion1() {
+        return opcion1;
+    }
+
+    public void setOpcion1(@NonNull String opcion1) {
+        this.opcion1 = opcion1;
+    }
+
+    @NonNull
+    public String getOpcion2() {
+        return opcion2;
+    }
+
+    public void setOpcion2(@NonNull String opcion2) {
+        this.opcion2 = opcion2;
+    }
+
+    @NonNull
+    public String getOpcion3() {
+        return opcion3;
+    }
+
+    public void setOpcion3(@NonNull String opcion3) {
+        this.opcion3 = opcion3;
+    }
+
+    @NonNull
+    public String getOpcion4() {
+        return opcion4;
+    }
+
+    public void setOpcion4(@NonNull String opcion4) {
+        this.opcion4 = opcion4;
     }
 
     @Override

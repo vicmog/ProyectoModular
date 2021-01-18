@@ -1,7 +1,5 @@
 package com.example.proyectomodular.model.room.entity;
 
-import android.graphics.drawable.Drawable;
-
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -28,6 +26,9 @@ public class Usuario {
     @NonNull
     @ColumnInfo(name = "nRespuestasCorrectas")
     private  int nRespuestasCorrectas;
+
+    public Usuario() {
+    }
 
     public Usuario(@NonNull String nombre, @NonNull int avatar, int nRespuestas, int nRespuestasCorrectas) {
         this.nombre = nombre;

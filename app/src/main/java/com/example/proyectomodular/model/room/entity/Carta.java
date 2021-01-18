@@ -23,6 +23,9 @@ public class Carta {
     @ColumnInfo(name = "descripcion")
     private String descripcion;
 
+    public Carta() {
+    }
+
     public Carta(@NonNull String urlFoto, @NonNull String nombreAnimal, @NonNull String descripcion) {
         this.urlFoto = urlFoto;
         this.nombreAnimal = nombreAnimal;
