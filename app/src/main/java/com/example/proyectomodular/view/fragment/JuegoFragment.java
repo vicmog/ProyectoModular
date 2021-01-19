@@ -25,6 +25,7 @@ public class JuegoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_juego, container, false);
+
     }
 
     @Override
@@ -34,6 +35,7 @@ public class JuegoFragment extends Fragment {
         bottomNavigationView = view.findViewById(R.id.bottom_navigation_juego);
 
         bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
+
         navController = Navigation.findNavController(view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
