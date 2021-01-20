@@ -40,6 +40,18 @@ public class ViewModel extends AndroidViewModel {
         return repository.getLiveUsuarioList();
     }
 
+    public LiveData<List<Usuario>> getLiveUsuarioPuntuacionList() {
+        return repository.getLiveUsuarioPuntuacionList();
+    }
+
+    public Usuario getUsuarioPuntuacion(){
+        return repository.getUsuarioPuntuacion();
+    }
+
+    public void setUsuarioPuntuacion(Usuario usuarioPuntuacion){
+        repository.setUsuarioPuntuacion(usuarioPuntuacion);
+    }
+
     //CARTA
 
     public void insertCarta(Carta carta){

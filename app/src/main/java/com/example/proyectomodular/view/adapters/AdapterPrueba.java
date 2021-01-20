@@ -5,5 +5,7 @@ public class AdapterPrueba {
     //Rama sencilla
 
     //Cambio2
+
+    //Cambio3
     
 }

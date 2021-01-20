@@ -27,6 +27,8 @@ public class Repository {
     private LiveData<List<Usuario>> liveListaUsuarios;
     private LiveData<List<Carta>> liveListaCartas;
 
+    private Usuario usuarioPuntuacion;
+
     public Repository(Context context){
         db = GameDataBase.getDb(context);
         cartaDao = db.getCartaDao();
@@ -78,6 +80,19 @@ public class Repository {
     public LiveData<List<Usuario>> getLiveUsuarioList() {
         liveListaUsuarios = usuarioDao.getAll();
         return liveListaUsuarios;
+    }
+
+    public LiveData<List<Usuario>> getLiveUsuarioPuntuacionList() {
+        liveListaUsuarios = usuarioDao.getAllByPuntuacion();
+        return liveListaUsuarios;
+    }
+
+    public Usuario getUsuarioPuntuacion(){
+        return this.usuarioPuntuacion;
+    }
+
+    public void setUsuarioPuntuacion(Usuario usuarioPuntuacion){
+        this.usuarioPuntuacion=usuarioPuntuacion;
     }
 
     //CARTA
