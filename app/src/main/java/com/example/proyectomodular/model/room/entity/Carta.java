@@ -76,4 +76,10 @@ public class Carta {
                 ", descripcion='" + descripcion + '\'' +
                 '}';
     }
+
+    public Pregunta createPregunta(String pregunta,String respuesta,String opcion1,String opcion2,String opcion3,String opcion4){
+        Pregunta pre = new Pregunta(this.getId(),pregunta,respuesta,opcion1,opcion2,opcion3,opcion4);
+        return pre;
+    }
+
 }
