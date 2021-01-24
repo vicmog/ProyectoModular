@@ -131,7 +131,6 @@ private ViewModel miViewModel;
 
     @Override
     public int getItemCount() {
-
         return preguntas.size();
     }
 

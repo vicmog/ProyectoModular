@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.proyectomodular.R;
+import com.example.proyectomodular.model.room.entity.Carta;
+import com.example.proyectomodular.model.room.entity.Pregunta;
 import com.example.proyectomodular.model.room.entity.Usuario;
 import com.example.proyectomodular.view.adapters.AdaptadorJugadorJuego;
 import com.example.proyectomodular.viewmodel.ViewModel;
@@ -35,7 +38,7 @@ public class JuegoFragment extends Fragment {
     private NavController navController;
     private ViewModel miViewModel;
     private List<Usuario> usuarios;
-    private ImageView img;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -50,13 +53,26 @@ public class JuegoFragment extends Fragment {
 
         bottomNavigationView = view.findViewById(R.id.bottom_navigation_juego);
         miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
+
         usuarios = new ArrayList<>();
         miViewModel.setPuntuacionPartidaActual(0);
         miViewModel.setUsuarioJuegoJugador(new Usuario());
 
+//        miViewModel.insertUsuario(new Usuario("Pepe",R.drawable.profile1,1,1));
+//        Carta carta1 = new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg","Gato","Gato atigrado");
+//        miViewModel.insertCarta(carta1);
+//
+//
+//        miViewModel.insertPregunta(new Pregunta(1,"De que color es","Naranja","Naranja","Verde","Marron","Azul"));
+//        miViewModel.insertPregunta(new Pregunta(1,"Es pequeño","Grande","Pequeño","Enorme","Grande","Muy grande"));
+//          //#0075AD
+            //#2DB7FA
+            //#AD6610
+            //#FFAC47
+            //#FA9E2E
 
+       // miViewModel.insertPregunta(new Pregunta(1,"nueva","nueva","nueva","nueva","nueva","nueva"));
 
-       // miViewModel.insertUsuario(new Usuario("Pepe",R.drawable.profile1,1,1));
 
         bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
         navController = Navigation.findNavController(view);

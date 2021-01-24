@@ -131,6 +131,7 @@ public class JuegoJugarFragment extends Fragment {
         miViewModel.getAllPreguntas(id).observe(getActivity(), new Observer<List<Pregunta>>() {
             @Override
             public void onChanged(List<Pregunta> pre) {
+
                 preguntas.clear();
                 preguntas.addAll(pre);
                 adaptadorPreguntas.notifyDataSetChanged();

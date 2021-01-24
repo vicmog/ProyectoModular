@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -17,6 +18,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.proyectomodular.R;
+import com.example.proyectomodular.model.room.entity.Carta;
+import com.example.proyectomodular.model.room.entity.Pregunta;
+import com.example.proyectomodular.model.room.entity.Usuario;
+import com.example.proyectomodular.viewmodel.ViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -28,6 +33,8 @@ private NavController navController;
 private SharedPreferences spPasswordAdmin;
 private final String KEY ="passwordAdmin";
 private SharedPreferences.Editor editor;
+private ViewModel miViewModel;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -42,7 +49,7 @@ private SharedPreferences.Editor editor;
         spPasswordAdmin = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = spPasswordAdmin.edit();
 
-
+        miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
         navController = Navigation.findNavController(getView());
         etPassword = getView().findViewById(R.id.tietPasswordAdmin);
         etRetryPassword = getView().findViewById(R.id.tietRetryPasswordAdmin);
@@ -54,7 +61,13 @@ private SharedPreferences.Editor editor;
             public void onClick(View v) {
 
                 if(compruebaClaves()){
+                    miViewModel.insertUsuario(new Usuario("Pepe",R.drawable.profile1,1,1));
                     navController.navigate(R.id.hallFameFragment);
+                    Carta carta1 = new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg","Gato","Gato atigrado");
+                    miViewModel.insertCarta(carta1);
+                    Log.v("ZZZ",carta1.toString());
+                    miViewModel.insertPregunta(new Pregunta(1,"De que color es","Naranja","Naranja","Verde","Marron","Azul"));
+                    miViewModel.insertPregunta(new Pregunta(1,"Es pequeño","Grande","Pequeño","Enorme","Grande","Muy grande"));
 
                 }
 
