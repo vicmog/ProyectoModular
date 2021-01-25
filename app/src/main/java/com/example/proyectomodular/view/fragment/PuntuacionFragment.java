@@ -94,6 +94,7 @@ public class PuntuacionFragment extends Fragment {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
                     DialogFragment dialog = new ContactosFragment();
                     dialog.show(getFragmentManager(),"tag");
+                    Toast.makeText(getContext(),"asdf",Toast.LENGTH_LONG);
                 }
             }
         });
@@ -113,7 +114,7 @@ public class PuntuacionFragment extends Fragment {
     }
 
     //METODO CON UN INTENT IMPLICITO PARA ENVIAR UN MAIL A TI MISMO
-    private void enviarMail() {
+    public void enviarMail() {
 //        String recipientList = mEditTextTo.getText().toString();
 //        String[] recipients = recipientList.split(",");
         String  emailAccount = "";
