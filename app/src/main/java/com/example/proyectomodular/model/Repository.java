@@ -129,7 +129,8 @@ public class Repository {
             @Override
             public void run() {
                 try {
-                    cartaDao.insert(carta);
+                    long id = cartaDao.insert(carta);
+                    preguntaDao.insert(new Pregunta(id,"De que color es","Naranja","Naranja","Verde","Marron","Azul"));
                 } catch (Exception e) {
                     Log.v("insertCarta", e.toString());
                 }
