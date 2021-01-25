@@ -97,6 +97,7 @@ public class JuegoFragment extends Fragment {
         recyclerViewJuego.setAdapter(adapter);
         recyclerViewJuego.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+
         miViewModel.getLiveUsuarioList().observe(getActivity(), new Observer<List<Usuario>>() {
             @Override
             public void onChanged(List<Usuario> users) {
