@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.proyectomodular.model.Contacto;
 import com.example.proyectomodular.model.Repository;
 import com.example.proyectomodular.model.room.entity.Carta;
 import com.example.proyectomodular.model.room.entity.Pregunta;
@@ -83,4 +84,15 @@ public class ViewModel extends AndroidViewModel {
     public void deletePregunta(Pregunta pregunta){
         repository.deletePregunta(pregunta);
     }
+
+    //CONTACTO
+
+    public List<Contacto> getEnviarContactos(){
+        return repository.getEnviarContactos();
+    }
+
+    public void setEnviarContactos(List<Contacto> enviarContactos){
+        repository.setEnviarContactos(enviarContactos);
+    }
+
 }

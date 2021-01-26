@@ -31,9 +31,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectomodular.R;
+import com.example.proyectomodular.model.Contacto;
 import com.example.proyectomodular.viewmodel.ViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class PuntuacionFragment extends Fragment {
@@ -91,10 +93,10 @@ public class PuntuacionFragment extends Fragment {
             public void onClick(View v) {
                 compruebaPermisoContactos();
                 if(permisoContactos){
+                    viewModel.setEnviarContactos(new ArrayList<Contacto>());
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
                     DialogFragment dialog = new ContactosFragment();
                     dialog.show(getFragmentManager(),"tag");
-                    Toast.makeText(getContext(),"asdf",Toast.LENGTH_LONG);
                 }
             }
         });

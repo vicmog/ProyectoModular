@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9E0AE"
     tools:context=".view.fragment.PuntuacionFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,6 +16,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Nombre de jugador"
+        android:textColor="#682C0E"
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@+id/ivAvatarPuntuacion"
         tools:layout_editor_absoluteX="0dp" />
@@ -24,7 +26,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="#FFC876"
         android:text="Enviar"
+        android:textColor="#682C0E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_puntuacion2" />
@@ -51,6 +55,7 @@
         android:layout_marginEnd="32dp"
         android:gravity="center"
         android:text="Puntuacion"
+        android:textColor="#682C0E"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -64,6 +69,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="Has alcanzado una puntuación de"
+        android:textColor="#682C0E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nombrePuntuacion" />
@@ -76,6 +82,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Puedes recibir ahora mismo esta puntuación a tu correo!"
+        android:textColor="#682C0E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_puntuacionPuntuacion" />
@@ -85,7 +92,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="#FFC876"
         android:text="Compartir"
+        android:textColor="#682C0E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_puntuacion3" />
@@ -98,6 +107,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="O prefieres que tus contactos conozcan tu puntuación? A que esperas? Compartelo ya!"
+        android:textColor="#682C0E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_enviarMail" />

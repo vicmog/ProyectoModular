@@ -29,6 +29,8 @@ public class Repository {
 
     private Usuario usuarioPuntuacion;
 
+    private List<Contacto> enviarContactos;
+
     public Repository(Context context){
         db = GameDataBase.getDb(context);
         cartaDao = db.getCartaDao();
@@ -181,4 +183,15 @@ public class Repository {
             }
         });
     }
+
+    //CONTACTO
+
+    public List<Contacto> getEnviarContactos(){
+        return this.enviarContactos;
+    }
+
+    public void setEnviarContactos(List<Contacto> enviarContactos){
+        this.enviarContactos = enviarContactos;
+    }
+
 }

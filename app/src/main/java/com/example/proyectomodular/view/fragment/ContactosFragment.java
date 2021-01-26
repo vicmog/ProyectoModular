@@ -4,6 +4,7 @@ import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -85,7 +86,7 @@ public class ContactosFragment extends DialogFragment implements AdapterView.OnI
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-        adapter = new EmailContactosAdapter(getContactos());
+        adapter = new EmailContactosAdapter(getActivity(),getContactos());
         recyclerView.setAdapter(adapter);
 
         prueba.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +103,7 @@ public class ContactosFragment extends DialogFragment implements AdapterView.OnI
 
         contactos = new ArrayList<>();
 
-        Cursor cursor = getContext().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+        Cursor cursor = getContext().getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,
                 null, null, null, ContactsContract.Contacts.DISPLAY_NAME+" ASC" );
 
         cursor.moveToFirst();
@@ -112,12 +113,11 @@ public class ContactosFragment extends DialogFragment implements AdapterView.OnI
             i++;
             contactos.add(new Contacto(cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                     , cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)),
-                    "contacto"+i+"@email.com", false));
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA))));
         }
 
         return contactos;
     }
-
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -127,10 +127,11 @@ public class ContactosFragment extends DialogFragment implements AdapterView.OnI
     //METODO CON UN INTENT IMPLICITO PARA ENVIAR UN MAIL A TI MISMO
     public void enviarMail() {
         String emailList= "";
-        for(Contacto c: contactos){
-            if(c.isEnviar()){
-                emailList+= c.getEmail()+",";
-            }
+        for(Contacto c: viewModel.getEnviarContactos()){
+            emailList+= c.getEmail()+",";
+//            if(c.isEnviar()){
+//                emailList+= c.getEmail()+",";
+//            }
         }
         String[] emails = emailList.split(",");
 

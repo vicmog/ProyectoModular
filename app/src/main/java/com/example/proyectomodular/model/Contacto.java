@@ -3,13 +3,11 @@ package com.example.proyectomodular.model;
 public class Contacto {
 
     private String nombre,numero,email;
-    private boolean enviar;
 
-    public Contacto(String nombre, String numero, String email, boolean enviar) {
+    public Contacto(String nombre, String numero, String email) {
         this.nombre = nombre;
         this.numero = numero;
         this.email = email;
-        this.enviar = enviar;
     }
 
     public String getNombre() {
@@ -36,21 +34,12 @@ public class Contacto {
         this.email = email;
     }
 
-    public boolean isEnviar() {
-        return enviar;
-    }
-
-    public void setEnviar(boolean enviar) {
-        this.enviar = enviar;
-    }
-
     @Override
     public String toString() {
         return "Contacto{" +
                 "nombre='" + nombre + '\'' +
                 ", numero='" + numero + '\'' +
                 ", email='" + email + '\'' +
-                ", enviar=" + enviar +
                 '}';
     }
 }

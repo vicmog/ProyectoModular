@@ -1,5 +1,6 @@
 package com.example.proyectomodular.view.adapters;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +10,24 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectomodular.R;
 import com.example.proyectomodular.model.Contacto;
+import com.example.proyectomodular.viewmodel.ViewModel;
 
 import java.util.List;
 
 public class EmailContactosAdapter extends RecyclerView.Adapter<EmailContactosAdapter.ViewHolder>{
 
     private List<Contacto> contactos;
+    private ViewModel viewModel;
+    private Activity activity;
 
-    public EmailContactosAdapter(List<Contacto> contactos){
+    public EmailContactosAdapter(Activity activity, List<Contacto> contactos){
+        this.activity = activity;
         this.contactos = contactos;
     }
 
@@ -28,7 +35,7 @@ public class EmailContactosAdapter extends RecyclerView.Adapter<EmailContactosAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contacto,parent,false);
-
+        viewModel = new ViewModelProvider((ViewModelStoreOwner) activity).get(ViewModel.class);
         ViewHolder holder = new ViewHolder(vista);
 
         return holder;
@@ -39,15 +46,14 @@ public class EmailContactosAdapter extends RecyclerView.Adapter<EmailContactosAd
 
         Contacto contacto = contactos.get(position);
         holder.contacto_nombre.setText(contactos.get(position).getNombre());
-        holder.contacto_numero.setText(contactos.get(position).getNumero());
         holder.contacto_email.setText(contactos.get(position).getEmail());
         holder.contacto_enviar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    contacto.setEnviar(true);
+                    viewModel.getEnviarContactos().add(contacto);
                 } else {
-                    contacto.setEnviar(false);
+                    viewModel.getEnviarContactos().remove(contacto);
                 }
             }
         });
@@ -68,7 +74,6 @@ public class EmailContactosAdapter extends RecyclerView.Adapter<EmailContactosAd
             super(itemView);
 
             contacto_nombre = itemView.findViewById(R.id.tv_nombreContacto);
-            contacto_numero = itemView.findViewById(R.id.tv_numeroContacto);
             contacto_email = itemView.findViewById(R.id.tv_emailContacto);
             contacto_enviar = itemView.findViewById(R.id.cb_enviarContacto);
             parent_layout = itemView.findViewById(R.id.item_contacto);
