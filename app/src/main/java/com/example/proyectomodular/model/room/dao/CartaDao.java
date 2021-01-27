@@ -30,7 +30,7 @@ public interface CartaDao {
     @Query("select count(carta.id) from carta")
     long getNumeroCartas();
 
-    @Query("SELECT * FROM carta ORDER BY RANDOM() LIMIT 1;")
-    Carta getCartaAleatoria();
+    @Query("SELECT * FROM carta WHERE carta.id != :id ORDER BY RANDOM() LIMIT 1;")
+    Carta getCartaAleatoria(long id);
 
 }

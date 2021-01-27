@@ -86,6 +86,7 @@ public class JuegoJugarFragment extends Fragment {
                 usuarioPartida.setNRespuestas(usuarioPartida.getNRespuestas() + miViewModel.getNumeroRespuestasTotales());
 
                 miViewModel.updateUsuario(usuarioPartida);
+
                 navController.navigate(R.id.mostrarPuntuacionFragment);
 
             }
@@ -102,10 +103,11 @@ public class JuegoJugarFragment extends Fragment {
             }
         });
 
-        miViewModel.getCarta();
+        miViewModel.getCarta(miViewModel.getIdCartaAnterior());
         miViewModel.getCartaAleatoria().observe(getActivity(), new Observer<Carta>() {
             @Override
             public void onChanged(Carta carta) {
+                miViewModel.setIdCartaAnterior(carta.getId());
                 tvNombreCarta.setText(carta.getNombreAnimal());
                 tvDescripcionCarta.setText(carta.getDescripcion());
 

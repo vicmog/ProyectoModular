@@ -34,6 +34,16 @@ public class Repository {
     private int puntuacionPartidaActual;
     private int numeroRespuestasTotales;
 
+    private  long idCartaAnterior=0;
+
+    public long getIdCartaAnterior() {
+        return idCartaAnterior;
+    }
+
+    public void setIdCartaAnterior(long idCartaAnterior) {
+        this.idCartaAnterior = idCartaAnterior;
+    }
+
     private Usuario usuarioJuegoJugador;
 
     public Repository(Context context){
@@ -131,6 +141,8 @@ public class Repository {
                 try {
                     long id = cartaDao.insert(carta);
                     preguntaDao.insert(new Pregunta(id,"De que color es","Naranja","Naranja","Verde","Marron","Azul"));
+                    preguntaDao.insert(new Pregunta(id,"Pregunta2","Naranja","Naranja","Verde","Marron","Azul"));
+                    preguntaDao.insert(new Pregunta(id,"Pregunta3","Naranja","Naranja","Verde","Marron","Azul"));
                 } catch (Exception e) {
                     Log.v("insertCarta", e.toString());
                 }
@@ -138,12 +150,12 @@ public class Repository {
         });
     }
 
-    public void getCarta() {
+    public void getCarta(long id) {
         ApplicationThread.threadExecutorPool.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Carta carta = cartaDao.getCartaAleatoria();
+                    Carta carta = cartaDao.getCartaAleatoria(id);
 
 
                     cartaAleatoria.postValue(carta);

@@ -42,8 +42,8 @@ public class ViewModel extends AndroidViewModel {
         return repository.getCartaAleatoria();
     }
 
-    public void getCarta() {
-        repository.getCarta();
+    public void getCarta(long id) {
+        repository.getCarta(id);
     }
 
     //USUARIO
@@ -114,5 +114,13 @@ public class ViewModel extends AndroidViewModel {
 
     public void setNumeroRespuestasTotales(int numeroRespuestasTotales) {
         repository.setNumeroRespuestasTotales(numeroRespuestasTotales);
+    }
+
+    public long getIdCartaAnterior() {
+        return repository.getIdCartaAnterior();
+    }
+
+    public void setIdCartaAnterior(long idCartaAnterior) {
+        repository.setIdCartaAnterior(idCartaAnterior);
     }
 }
