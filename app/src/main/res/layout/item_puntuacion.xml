@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:clickable="true">
             <!-- android:background="@android:drawable/btn_default" -->
-            
+
             <TextView
                 android:id="@+id/tvPuntuacion"
                 android:layout_width="wrap_content"

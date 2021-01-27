@@ -14,21 +14,19 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.proyectomodular.R;
 import com.example.proyectomodular.model.Contacto;
@@ -36,7 +34,6 @@ import com.example.proyectomodular.viewmodel.ViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class PuntuacionFragment extends Fragment {
 
@@ -74,6 +71,18 @@ public class PuntuacionFragment extends Fragment {
         avatar = view.findViewById(R.id.ivAvatarPuntuacion);
         enviarCorreo = view.findViewById(R.id.btn_enviarMail);
         compartirPuntuacion = view.findViewById(R.id.btn_compartirPuntuacion);
+        Toolbar myToolbar = (Toolbar) view.findViewById(R.id.my_toolbar_puntuacion);
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
 
         nombre.setText(viewModel.getUsuarioPuntuacion().getNombre());
         puntuacion.setText(viewModel.getUsuarioPuntuacion().getNRespuestasCorrectas()+" puntos");
