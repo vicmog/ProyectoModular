@@ -13,7 +13,7 @@ import com.example.proyectomodular.model.room.entity.Carta;
 import com.example.proyectomodular.model.room.entity.Pregunta;
 import com.example.proyectomodular.model.room.entity.Usuario;
 
-@Database(entities = {Carta.class, Usuario.class, Pregunta.class},version = 1,exportSchema = false)
+@Database(entities = {Carta.class, Usuario.class, Pregunta.class},version = 3,exportSchema = false)
 public abstract class GameDataBase extends RoomDatabase {
 
     public abstract CartaDao getCartaDao();

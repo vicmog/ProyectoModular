@@ -43,6 +43,7 @@ public class JuegoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_juego, container, false);
+
     }
 
     @Override
@@ -75,6 +76,7 @@ public class JuegoFragment extends Fragment {
 
 
         bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
+
         navController = Navigation.findNavController(view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -85,7 +87,7 @@ public class JuegoFragment extends Fragment {
                         break;
                     case R.id.jugarPartida:navController.navigate(R.id.juegoFragment);
                         break;
-                    case R.id.adminArea:navController.navigate(R.id.adminFragment);
+                    case R.id.adminArea:navController.navigate(R.id.adminPassFragment);
                         break;
                 }
                 return true;

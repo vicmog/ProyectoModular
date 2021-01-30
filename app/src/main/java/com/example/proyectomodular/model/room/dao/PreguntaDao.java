@@ -9,6 +9,9 @@ import androidx.room.Update;
 
 import com.example.proyectomodular.model.room.entity.Carta;
 import com.example.proyectomodular.model.room.entity.Pregunta;
+import com.example.proyectomodular.model.room.entity.Usuario;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -23,6 +26,15 @@ public interface PreguntaDao {
 
     @Delete
     int delete(Pregunta pregunta);
+
+    @Query("Delete from pregunta where idCarta= :id")
+     void delAll(long id);
+
+    @Query("select * from pregunta where idCarta= :id")
+    List<Pregunta> getPreguntas(long id);
+
+
+
 
     @Query("select * from pregunta where pregunta.idCarta = :id")
     LiveData<List<Pregunta>> getAll(long id);

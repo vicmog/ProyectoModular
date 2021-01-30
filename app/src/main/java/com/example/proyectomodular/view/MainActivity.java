@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
 
+
         bateriaIntentFilter = new IntentFilter();
         bateriaIntentFilter.addAction (Intent.ACTION_BATTERY_LOW);
         bateriaIntentFilter.addAction (Intent.ACTION_BATTERY_OKAY);
@@ -40,4 +41,8 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         unregisterReceiver(Breceiver);
     }
+
+
+
+
 }

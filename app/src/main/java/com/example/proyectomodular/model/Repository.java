@@ -25,6 +25,23 @@ public class Repository {
     private CartaDao cartaDao;
     private PreguntaDao preguntaDao;
     private UsuarioDao usuarioDao;
+    private Usuario editar;
+    private long idCarta;
+    private Carta editarCarta;
+    private List<Pregunta> editarPreguntas;
+
+    public Pregunta getEditarPregunta() {
+        return editarPregunta;
+    }
+
+    public void setEditarPregunta(Pregunta editarPregunta) {
+        this.editarPregunta = editarPregunta;
+    }
+
+    private Pregunta editarPregunta;
+
+    MutableLiveData<Long> cardId = new MutableLiveData<>();
+    MutableLiveData<List<Pregunta>> listaPreguntas = new MutableLiveData<>();
 
 
     private LiveData<List<Usuario>> liveListaUsuarios;
@@ -92,6 +109,74 @@ public class Repository {
 
 //USUARIO
 
+    public void delAll(long id){
+        ApplicationThread.threadExecutorPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    preguntaDao.delAll(id);
+                } catch (Exception e) {
+                    Log.v("getPreguntas", e.toString());
+                }
+            }
+        });
+    }
+
+
+    public List<Pregunta> getEditarPreguntas() {
+        return editarPreguntas;
+    }
+
+    public void setEditarPreguntas(List<Pregunta> editarPreguntas) {
+        this.editarPreguntas = editarPreguntas;
+    }
+
+    public void postPreguntas(long id){
+         ApplicationThread.threadExecutorPool.execute(new Runnable() {
+             @Override
+             public void run() {
+                 try {
+                     List<Pregunta> lista = preguntaDao.getPreguntas(id);
+                     listaPreguntas.postValue(lista);
+                 } catch (Exception e) {
+                     Log.v("getPreguntas", e.toString());
+                 }
+             }
+         });
+     }
+
+     public MutableLiveData<List<Pregunta>> getListaPreguntas(){
+        return listaPreguntas;
+     }
+
+    public long getIdCarta() {
+        return idCarta;
+    }
+
+    public void setIdCarta(long idCarta) {
+        this.idCarta = idCarta;
+    }
+
+    public MutableLiveData<Long> getCardId() {
+        return cardId;
+    }
+
+    public Usuario getEditar() {
+        return editar;
+    }
+
+    public void setEditar(Usuario editar) {
+        this.editar = editar;
+    }
+
+    public Carta getEditarCarta() {
+        return editarCarta;
+    }
+
+    public void setEditarCarta(Carta editar) {
+        this.editarCarta = editar;
+    }
+
     public void insertUsuario(Usuario usuario) {
         ApplicationThread.threadExecutorPool.execute(new Runnable() {
             @Override
@@ -152,11 +237,14 @@ public class Repository {
     //CARTA
 
     public void insertCarta(Carta carta) {
+
         ApplicationThread.threadExecutorPool.execute(new Runnable() {
             @Override
             public void run() {
                 try {
                     long id = cartaDao.insert(carta);
+                    cardId.postValue(id);
+
                     preguntaDao.insert(new Pregunta(id,"De que color es","Naranja","Azul","Verde","Marron"));
                     preguntaDao.insert(new Pregunta(id,"Pregunta2","Naranja","Azul","Verde","Marron"));
                     preguntaDao.insert(new Pregunta(id,"Pregunta3","Naranja","Azul","Verde","Marron"));
@@ -255,6 +343,8 @@ public class Repository {
             }
         });
     }
+
+
 
     public LiveData<List<Pregunta>> getAllPreguntas(long id){
         try {

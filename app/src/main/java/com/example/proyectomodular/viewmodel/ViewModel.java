@@ -49,6 +49,63 @@ public class ViewModel extends AndroidViewModel {
 
     //USUARIO
 
+
+    public Pregunta getEditarPregunta() {
+        return repository.getEditarPregunta();
+    }
+
+    public void setEditarPregunta(Pregunta editarPregunta) {
+        repository.setEditarPregunta(editarPregunta);
+    }
+
+    public void delAll(long id) {
+        repository.delAll(id);
+    }
+
+    public List<Pregunta> getEditarPreguntas() {
+        return repository.getEditarPreguntas();
+    }
+
+    public void setEditarPreguntas(List<Pregunta> editarPreguntas) {
+        repository.setEditarPreguntas(editarPreguntas);
+    }
+
+    public void postPreguntas(long id) {
+        repository.postPreguntas(id);
+    }
+
+    public MutableLiveData<List<Pregunta>> getListaPreguntas() {
+        return repository.getListaPreguntas();
+    }
+
+    public long getIdCarta() {
+        return repository.getIdCarta();
+    }
+
+    public void setIdCarta(long idCarta) {
+        repository.setIdCarta(idCarta);
+    }
+
+    public MutableLiveData<Long> getCardId() {
+        return repository.getCardId();
+    }
+
+    public Usuario getEditar() {
+        return repository.getEditar();
+    }
+
+    public void setEditar(Usuario editar) {
+        repository.setEditar(editar);
+    }
+
+    public Carta getEditarCarta() {
+        return repository.getEditarCarta();
+    }
+
+    public void setEditarCarta(Carta editar) {
+        repository.setEditarCarta(editar);
+    }
+
     public void insertUsuario(Usuario usuario){
         repository.insertUsuario(usuario);
     }
@@ -108,6 +165,7 @@ public class ViewModel extends AndroidViewModel {
     public void deletePregunta(Pregunta pregunta){
         repository.deletePregunta(pregunta);
     }
+
 
     public LiveData<List<Pregunta>> getAllPreguntas(long id) {
         return repository.getAllPreguntas(id);
