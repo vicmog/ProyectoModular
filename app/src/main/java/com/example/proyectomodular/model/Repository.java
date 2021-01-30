@@ -46,6 +46,10 @@ public class Repository {
 
     private Usuario usuarioJuegoJugador;
 
+    private Usuario usuarioPuntuacion;
+
+    private List<Contacto> enviarContactos;
+
     public Repository(Context context){
         db = GameDataBase.getDb(context);
         cartaDao = db.getCartaDao();
@@ -130,6 +134,19 @@ public class Repository {
     public LiveData<List<Usuario>> getLiveUsuarioList() {
         liveListaUsuarios = usuarioDao.getAll();
         return liveListaUsuarios;
+    }
+
+    public LiveData<List<Usuario>> getLiveUsuarioPuntuacionList() {
+        liveListaUsuarios = usuarioDao.getAllByPuntuacion();
+        return liveListaUsuarios;
+    }
+
+    public Usuario getUsuarioPuntuacion(){
+        return this.usuarioPuntuacion;
+    }
+
+    public void setUsuarioPuntuacion(Usuario usuarioPuntuacion){
+        this.usuarioPuntuacion=usuarioPuntuacion;
     }
 
     //CARTA
@@ -249,4 +266,15 @@ public class Repository {
 
         return liveListaPreguntas;
     }
+
+    //CONTACTO
+
+    public List<Contacto> getEnviarContactos(){
+        return this.enviarContactos;
+    }
+
+    public void setEnviarContactos(List<Contacto> enviarContactos){
+        this.enviarContactos = enviarContactos;
+    }
+
 }

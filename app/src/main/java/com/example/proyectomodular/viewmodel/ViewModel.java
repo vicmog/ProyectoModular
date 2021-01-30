@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.proyectomodular.model.Contacto;
 import com.example.proyectomodular.model.Repository;
 import com.example.proyectomodular.model.room.entity.Carta;
 import com.example.proyectomodular.model.room.entity.Pregunta;
@@ -62,6 +63,18 @@ public class ViewModel extends AndroidViewModel {
 
     public LiveData<List<Usuario>> getLiveUsuarioList() {
         return repository.getLiveUsuarioList();
+    }
+
+    public LiveData<List<Usuario>> getLiveUsuarioPuntuacionList() {
+        return repository.getLiveUsuarioPuntuacionList();
+    }
+
+    public Usuario getUsuarioPuntuacion(){
+        return repository.getUsuarioPuntuacion();
+    }
+
+    public void setUsuarioPuntuacion(Usuario usuarioPuntuacion){
+        repository.setUsuarioPuntuacion(usuarioPuntuacion);
     }
 
     //CARTA
@@ -123,4 +136,15 @@ public class ViewModel extends AndroidViewModel {
     public void setIdCartaAnterior(long idCartaAnterior) {
         repository.setIdCartaAnterior(idCartaAnterior);
     }
+
+    //CONTACTO
+
+    public List<Contacto> getEnviarContactos(){
+        return repository.getEnviarContactos();
+    }
+
+    public void setEnviarContactos(List<Contacto> enviarContactos){
+        repository.setEnviarContactos(enviarContactos);
+    }
+
 }
