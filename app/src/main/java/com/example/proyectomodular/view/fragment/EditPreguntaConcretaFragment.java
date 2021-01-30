@@ -59,10 +59,10 @@ public class EditPreguntaConcretaFragment extends Fragment {
         guardar = view.findViewById(R.id.btSave);
 
         etPregunta.setText(pregunta.getPregunta());
-        res1.setText(pregunta.getRespuesta());
-        res2.setText(pregunta.getRes2());
-        res3.setText(pregunta.getRes3());
-        res4.setText(pregunta.getRes4());
+        res1.setText(pregunta.getOpcion1());
+        res2.setText(pregunta.getOpcion2());
+        res3.setText(pregunta.getOpcion3());
+        res4.setText(pregunta.getOpcion4());
 
         navController = Navigation.findNavController(view);
 
@@ -77,10 +77,10 @@ public class EditPreguntaConcretaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 pregunta.setPregunta(etPregunta.getText().toString());
-                pregunta.setRespuesta(res1.getText().toString());
-                pregunta.setRes2(res2.getText().toString());
-                pregunta.setRes3(res3.getText().toString());
-                pregunta.setRes4(res4.getText().toString());
+                pregunta.setOpcion1(res1.getText().toString());
+                pregunta.setOpcion2(res2.getText().toString());
+                pregunta.setOpcion3(res3.getText().toString());
+                pregunta.setOpcion4(res4.getText().toString());
                 vm.updatePregunta(pregunta);
                 Toast.makeText(getContext(), "Guardado", Toast.LENGTH_SHORT).show();
 
