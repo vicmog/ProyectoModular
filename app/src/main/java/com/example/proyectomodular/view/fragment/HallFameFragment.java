@@ -73,22 +73,12 @@ public class HallFameFragment extends Fragment implements OnItemClickListener {
         });
 
         viewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
-//        viewModel.insertUsuario(new Usuario("Tete",R.drawable.avatar,1,30));
-//        viewModel.insertUsuario(new Usuario("Eden",1,1,1));
-//        viewModel.insertUsuario(new Usuario("Rojo",1,1,29));
-//        viewModel.insertUsuario(new Usuario("Mata",1,1,3));
+        viewModel.insertUsuario(new Usuario("Tete",R.drawable.avatar,1,30));
 
         recyclerView = view.findViewById(R.id.recyclerPuntuacion);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
         adapter = new PuntuacionRecyclerAdapter(jugadores,this);
-//        adapter.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                viewModel.setUsuarioPuntuacion(new Usuario("Loco"+v.getId(),1,1,1));
-//                NavHostFragment.findNavController(HallFameFragment.this).navigate(R.id.action_hallFameFragment_to_puntuacionFragment);
-//            }
-//        });
         recyclerView.setAdapter(adapter);
 
         viewModel.getLiveUsuarioPuntuacionList().observe(getActivity(), new Observer<List<Usuario>>() {

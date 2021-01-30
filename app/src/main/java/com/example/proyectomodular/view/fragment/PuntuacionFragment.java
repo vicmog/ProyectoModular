@@ -47,9 +47,6 @@ public class PuntuacionFragment extends Fragment {
     private boolean permisoCuentas;
     private boolean permisoContactos;
 
-//    private final static int PERMISSION_REQUEST_CODE = 1;
-//    private String wantPermission = Manifest.permission.GET_ACCOUNTS;
-
     public PuntuacionFragment() {
         // Required empty public constructor
     }
@@ -153,7 +150,7 @@ public class PuntuacionFragment extends Fragment {
     }
 
     private void compruebaPermisoContactos() {
-        int permisoLeeContactos = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.GET_ACCOUNTS);
+        int permisoLeeContactos = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || (permisoLeeContactos == PackageManager.PERMISSION_GRANTED)) {
 
@@ -161,10 +158,10 @@ public class PuntuacionFragment extends Fragment {
 
         } else {
 
-            if (shouldShowRequestPermissionRationale(Manifest.permission.GET_ACCOUNTS)) {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
                 mostrarInfromacionDetalladaPermisoContactos();
             } else {
-                requestPermissions(new String[]{Manifest.permission.GET_ACCOUNTS}, PERMISOACCEDERCONTACTOS);
+                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISOACCEDERCONTACTOS);
             }
 
         }
@@ -228,7 +225,7 @@ public class PuntuacionFragment extends Fragment {
 
     private void mostrarInfromacionDetalladaPermisoContactos() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Permisos para acceder a contactos");
+        builder.setTitle("Debes dar permisos para acceder a tus contactos");
         builder.setMessage("¿Deseas conceder permisos a esta aplicación para acceder a los contactos?");
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @SuppressLint("NewApi")
