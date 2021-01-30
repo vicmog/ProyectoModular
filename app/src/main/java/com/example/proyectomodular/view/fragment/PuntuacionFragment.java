@@ -42,14 +42,9 @@ public class PuntuacionFragment extends Fragment {
     private ImageView avatar;
     private Button enviarCorreo,compartirPuntuacion;
 
-    private final static int PERMISOACCEDERCONTACTOS = 1;
-    private final static int PERMISOACCEDERCORREOS = 2;
-    private boolean permisoCuentas;
-    private boolean permisoContactos;
-
-    public PuntuacionFragment() {
-        // Required empty public constructor
-    }
+    private final static int PERMISOS = 1;
+    private boolean permisoCuentas = false;
+    private boolean permisoContactos = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,7 +82,7 @@ public class PuntuacionFragment extends Fragment {
         enviarCorreo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                compruebaPermisoCorreos();
+                compruebaPermisos();
                 if(permisoCuentas){
                     enviarMail();
                 }
@@ -97,7 +92,7 @@ public class PuntuacionFragment extends Fragment {
         compartirPuntuacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                compruebaPermisoContactos();
+                compruebaPermisos();
                 if(permisoContactos){
                     viewModel.setEnviarContactos(new ArrayList<Contacto>());
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
@@ -149,38 +144,21 @@ public class PuntuacionFragment extends Fragment {
         }
     }
 
-    private void compruebaPermisoContactos() {
+    private void compruebaPermisos() {
         int permisoLeeContactos = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS);
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || (permisoLeeContactos == PackageManager.PERMISSION_GRANTED)) {
-
-            permisoContactos = true;
-
-        } else {
-
-            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
-                mostrarInfromacionDetalladaPermisoContactos();
-            } else {
-                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISOACCEDERCONTACTOS);
-            }
-
-        }
-
-    }
-
-    private void compruebaPermisoCorreos() {
         int permisoLeeCuentas = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.GET_ACCOUNTS);
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || (permisoLeeCuentas == PackageManager.PERMISSION_GRANTED)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || (permisoLeeContactos == PackageManager.PERMISSION_GRANTED) || (permisoLeeCuentas == PackageManager.PERMISSION_GRANTED) ) {
 
+            permisoContactos = true;
             permisoCuentas = true;
 
         } else {
 
-            if (shouldShowRequestPermissionRationale(Manifest.permission.GET_ACCOUNTS)) {
-                mostrarInfromacionDetalladaPermisoCorreos();
+            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS) || shouldShowRequestPermissionRationale(Manifest.permission.GET_ACCOUNTS)) {
+                mostrarInfromacionDetalladaPermisoContactos();
             } else {
-                requestPermissions(new String[]{Manifest.permission.GET_ACCOUNTS}, PERMISOACCEDERCORREOS);
+                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS,Manifest.permission.GET_ACCOUNTS}, PERMISOS);
             }
 
         }
@@ -191,7 +169,7 @@ public class PuntuacionFragment extends Fragment {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
 
-            case PERMISOACCEDERCONTACTOS:
+            case PERMISOS:
                 int contador = 0;
                 for (int i = 0; i < grantResults.length; i++) {
                     if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
@@ -201,20 +179,6 @@ public class PuntuacionFragment extends Fragment {
                 }
                 if (contador == grantResults.length) {
                     permisoContactos = true;
-                } else {
-
-                }
-                break;
-            case PERMISOACCEDERCORREOS:
-                int count = 0;
-                for (int i = 0; i < grantResults.length; i++) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                        count++;
-
-                    }
-                }
-                if (count == grantResults.length) {
-                    permisoCuentas = true;
                 } else {
 
                 }
@@ -231,23 +195,7 @@ public class PuntuacionFragment extends Fragment {
             @SuppressLint("NewApi")
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                requestPermissions(new String[]{ Manifest.permission.READ_CONTACTS}, PERMISOACCEDERCONTACTOS);
-            }
-        });
-        builder.setNegativeButton("Cancelar", null);
-        builder.show();
-
-    }
-
-    private void mostrarInfromacionDetalladaPermisoCorreos() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Permisos para acceder a cuentas de correo del dispositivo");
-        builder.setMessage("¿Deseas conceder permisos a esta aplicación para acceder a tus cuentas?");
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                requestPermissions(new String[]{ Manifest.permission.READ_CONTACTS}, PERMISOACCEDERCORREOS);
+                requestPermissions(new String[]{ Manifest.permission.READ_CONTACTS,Manifest.permission.GET_ACCOUNTS}, PERMISOS);
             }
         });
         builder.setNegativeButton("Cancelar", null);
