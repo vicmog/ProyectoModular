@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_adminFragment_to_nuevoJugadorFragment"
             app:destination="@id/nuevoJugadorFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_nuevoJugadorFragment2"
+            app:destination="@id/nuevoJugadorFragment" />
     </fragment>
     <fragment
         android:id="@+id/nuevoJugadorFragment"
@@ -46,6 +49,9 @@
         <action
             android:id="@+id/action_nuevoJugadorFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_nuevoJugadorFragment_to_adminFragment2"
+            app:destination="@id/adminFragment" />
     </fragment>
     <fragment
         android:id="@+id/editJugadorFragment"
@@ -55,12 +61,22 @@
         <action
             android:id="@+id/action_editJugadorFragment_to_nuevoJugadorFragment"
             app:destination="@id/nuevoJugadorFragment" />
+        <action
+            android:id="@+id/action_editJugadorFragment_to_modificarPicFragment"
+            app:destination="@id/modificarPicFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartasFragment"
         android:name="com.example.proyectomodular.view.fragment.CartasFragment"
         android:label="fragment_cartas"
-        tools:layout="@layout/fragment_cartas" />
+        tools:layout="@layout/fragment_cartas" >
+        <action
+            android:id="@+id/action_cartasFragment_to_newCardFragment"
+            app:destination="@id/newCardFragment" />
+        <action
+            android:id="@+id/action_cartasFragment_to_editCardFragment"
+            app:destination="@id/editCardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hallFameFragment"
         android:name="com.example.proyectomodular.view.fragment.HallFameFragment"
@@ -110,5 +126,58 @@
         <action
             android:id="@+id/action_adminPassFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_adminPassFragment_to_nuevoJugadorFragment"
+            app:destination="@id/nuevoJugadorFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/modificarPicFragment"
+        android:name="com.example.proyectomodular.view.fragment.ModificarPicFragment"
+        android:label="fragment_modificar_pic"
+        tools:layout="@layout/fragment_modificar_pic" />
+    <fragment
+        android:id="@+id/listaUsuarios"
+        android:name="com.example.proyectomodular.view.fragment.ListaUsuarios"
+        android:label="fragment_lista_usuarios"
+        tools:layout="@layout/fragment_lista_usuarios" >
+        <action
+            android:id="@+id/action_listaUsuarios_to_nuevoJugadorFragment"
+            app:destination="@id/nuevoJugadorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCardFragment"
+        android:name="com.example.proyectomodular.view.fragment.NewCardFragment"
+        android:label="fragment_new_card"
+        tools:layout="@layout/fragment_new_card" >
+        <action
+            android:id="@+id/action_newCardFragment_to_addPreguntasFragment"
+            app:destination="@id/addPreguntasFragment" />
+        <action
+            android:id="@+id/action_newCardFragment_to_preguntaFragment"
+            app:destination="@id/preguntaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPreguntasFragment"
+        android:name="com.example.proyectomodular.view.fragment.AddPreguntasFragment"
+        android:label="fragment_add_preguntas"
+        tools:layout="@layout/fragment_add_preguntas" />
+    <fragment
+        android:id="@+id/preguntaFragment"
+        android:name="com.example.proyectomodular.view.fragment.PreguntaFragment"
+        android:label="fragment_pregunta"
+        tools:layout="@layout/fragment_pregunta" />
+    <fragment
+        android:id="@+id/editCardFragment"
+        android:name="com.example.proyectomodular.view.fragment.EditCardFragment"
+        android:label="fragment_edit_card"
+        tools:layout="@layout/fragment_edit_card" >
+        <action
+            android:id="@+id/action_editCardFragment_to_editPreguntaConcretaFragment"
+            app:destination="@id/editPreguntaConcretaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPreguntaConcretaFragment"
+        android:name="com.example.proyectomodular.view.fragment.EditPreguntaConcretaFragment"
+        android:label="fragment_edit_pregunta_concreta"
+        tools:layout="@layout/fragment_edit_pregunta_concreta" />
 </navigation>

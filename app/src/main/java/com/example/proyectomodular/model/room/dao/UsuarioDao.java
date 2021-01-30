@@ -26,4 +26,5 @@ public interface UsuarioDao {
 
     @Query("select * from usuario order by id")
     LiveData<List<Usuario>> getAll();
+
 }

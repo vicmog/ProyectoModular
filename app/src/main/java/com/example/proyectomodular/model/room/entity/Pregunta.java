@@ -28,10 +28,53 @@ public class Pregunta {
     @ColumnInfo(name = "respuesta")
     private String respuesta;
 
-    public Pregunta(long idCarta, @NonNull String pregunta, @NonNull String respuesta) {
+    @NonNull
+    @ColumnInfo(name = "res2")
+    private String res2;
+
+    @NonNull
+    public String getRes2() {
+        return res2;
+    }
+
+    public void setRes2(@NonNull String res2) {
+        this.res2 = res2;
+    }
+
+    @NonNull
+    public String getRes3() {
+        return res3;
+    }
+
+    public void setRes3(@NonNull String res3) {
+        this.res3 = res3;
+    }
+
+    @NonNull
+    public String getRes4() {
+        return res4;
+    }
+
+    public void setRes4(@NonNull String res4) {
+        this.res4 = res4;
+    }
+
+    @NonNull
+    @ColumnInfo(name = "res3")
+    private String res3;
+
+    @NonNull
+    @ColumnInfo(name = "res4")
+    private String res4;
+
+    public Pregunta(long idCarta, String pregunta, String respuesta,
+                    @NonNull String res2, @NonNull String res3, @NonNull String res4 ) {
         this.idCarta = idCarta;
         this.pregunta = pregunta;
         this.respuesta = respuesta;
+        this.res2 = res2;
+        this.res3 = res3;
+        this.res4 = res4;
     }
 
     public long getId() {
