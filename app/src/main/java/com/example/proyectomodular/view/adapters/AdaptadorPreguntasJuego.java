@@ -22,7 +22,10 @@ import com.example.proyectomodular.R;
 import com.example.proyectomodular.model.room.entity.Pregunta;
 import com.example.proyectomodular.viewmodel.ViewModel;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class AdaptadorPreguntasJuego extends RecyclerView.Adapter<AdaptadorPreguntasJuego.ViewHolder> {
 
@@ -54,13 +57,20 @@ private ViewModel miViewModel;
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
     holder.tvNombrePregunta.setText(preguntas.get(position).getPregunta());
-    holder.bt1.setText(preguntas.get(position).getOpcion1());
-    holder.bt2.setText(preguntas.get(position).getOpcion2());
-    holder.bt3.setText(preguntas.get(position).getOpcion3());
-    holder.bt4.setText(preguntas.get(position).getOpcion4());
+
+        ArrayList<String> opciones= new ArrayList<>();
+        opciones.add(preguntas.get(position).getOpcion1());
+        opciones.add(preguntas.get(position).getOpcion2());
+        opciones.add(preguntas.get(position).getOpcion3());
+        opciones.add(preguntas.get(position).getOpcion4());
+
+
+        Collections.shuffle(opciones);
+        holder.bt1.setText(opciones.get(0));
+        holder.bt2.setText(opciones.get(1));
+        holder.bt3.setText(opciones.get(2));
+        holder.bt4.setText(opciones.get(3));
     miViewModel.setNumeroRespuestasTotales(preguntas.size());
-
-
 
     holder.bt1.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -72,7 +82,7 @@ private ViewModel miViewModel;
             holder.bt4.setEnabled(false);
 
             texto = holder.bt1.getText().toString();
-            if(texto.compareToIgnoreCase(preguntas.get(position).getRespuesta())==0){
+            if(texto.compareToIgnoreCase(preguntas.get(position).getOpcion1())==0){
                 miViewModel.setPuntuacionPartidaActual(miViewModel.getPuntuacionPartidaActual()+1);
             }
         }
@@ -87,7 +97,7 @@ private ViewModel miViewModel;
                 holder.bt4.setEnabled(false);
 
                 texto = holder.bt2.getText().toString();
-                if(texto.compareToIgnoreCase(preguntas.get(position).getRespuesta())==0){
+                if(texto.compareToIgnoreCase(preguntas.get(position).getOpcion1())==0){
                     miViewModel.setPuntuacionPartidaActual(miViewModel.getPuntuacionPartidaActual()+1);
                 }
             }
@@ -102,7 +112,7 @@ private ViewModel miViewModel;
                 holder.bt4.setEnabled(false);
 
                 texto = holder.bt3.getText().toString();
-                if(texto.compareToIgnoreCase(preguntas.get(position).getRespuesta())==0){
+                if(texto.compareToIgnoreCase(preguntas.get(position).getOpcion1())==0){
                     miViewModel.setPuntuacionPartidaActual(miViewModel.getPuntuacionPartidaActual()+1);
                 }
             }
@@ -117,7 +127,7 @@ private ViewModel miViewModel;
                 holder.bt4.setEnabled(false);
 
                 texto = holder.bt4.getText().toString();
-                if(texto.compareToIgnoreCase(preguntas.get(position).getRespuesta())==0){
+                if(texto.compareToIgnoreCase(preguntas.get(position).getOpcion1())==0){
                     miViewModel.setPuntuacionPartidaActual(miViewModel.getPuntuacionPartidaActual()+1);
 
                 }

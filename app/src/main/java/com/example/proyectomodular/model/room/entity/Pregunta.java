@@ -27,10 +27,6 @@ public class Pregunta {
     private String pregunta;
 
     @NonNull
-    @ColumnInfo(name = "respuesta")
-    private String respuesta;
-
-    @NonNull
     @ColumnInfo(name = "opcion1")
     private String opcion1;
 
@@ -46,11 +42,10 @@ public class Pregunta {
     @ColumnInfo(name = "opcion4")
     private String opcion4;
 
-    public Pregunta(long idCarta, @NonNull String pregunta, @NonNull String respuesta, @NonNull String opcion1, @NonNull String opcion2, @NonNull String opcion3, @NonNull String opcion4) {
+    public Pregunta(long idCarta, @NonNull String pregunta,@NonNull String opcion1, @NonNull String opcion2, @NonNull String opcion3, @NonNull String opcion4) {
 
         this.idCarta = idCarta;
         this.pregunta = pregunta;
-        this.respuesta = respuesta;
         this.opcion1 = opcion1;
         this.opcion2 = opcion2;
         this.opcion3 = opcion3;
@@ -82,14 +77,6 @@ public class Pregunta {
         this.pregunta = pregunta;
     }
 
-    @NonNull
-    public String getRespuesta() {
-        return respuesta;
-    }
-
-    public void setRespuesta(@NonNull String respuesta) {
-        this.respuesta = respuesta;
-    }
 
     @NonNull
     public String getOpcion1() {
@@ -133,8 +120,10 @@ public class Pregunta {
                 "id=" + id +
                 ", idCarta=" + idCarta +
                 ", pregunta='" + pregunta + '\'' +
-                ", respuesta='" + respuesta + '\'' +
+                ", opcion1='" + opcion1 + '\'' +
+                ", opcion2='" + opcion2 + '\'' +
+                ", opcion3='" + opcion3 + '\'' +
+                ", opcion4='" + opcion4 + '\'' +
                 '}';
     }
-
 }

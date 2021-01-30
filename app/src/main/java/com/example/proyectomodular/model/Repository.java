@@ -157,9 +157,9 @@ public class Repository {
             public void run() {
                 try {
                     long id = cartaDao.insert(carta);
-                    preguntaDao.insert(new Pregunta(id,"De que color es","Naranja","Naranja","Verde","Marron","Azul"));
-                    preguntaDao.insert(new Pregunta(id,"Pregunta2","Naranja","Naranja","Verde","Marron","Azul"));
-                    preguntaDao.insert(new Pregunta(id,"Pregunta3","Naranja","Naranja","Verde","Marron","Azul"));
+                    preguntaDao.insert(new Pregunta(id,"De que color es","Naranja","Azul","Verde","Marron"));
+                    preguntaDao.insert(new Pregunta(id,"Pregunta2","Naranja","Azul","Verde","Marron"));
+                    preguntaDao.insert(new Pregunta(id,"Pregunta3","Naranja","Azul","Verde","Marron"));
                 } catch (Exception e) {
                     Log.v("insertCarta", e.toString());
                 }
