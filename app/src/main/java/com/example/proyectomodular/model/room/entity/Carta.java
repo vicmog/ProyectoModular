@@ -3,16 +3,18 @@ package com.example.proyectomodular.model.room.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "carta")
+@Entity(tableName = "carta", indices = {@Index(value = {"nombreAnimal"}, unique = true)})
 public class Carta {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
 
     @NonNull
-    @ColumnInfo(name = "urlFoto")
+
+    @ColumnInfo( name = "urlFoto")
     private String urlFoto;
 
     @NonNull

@@ -37,6 +37,7 @@ public class CartasFragment extends Fragment {
     public CardAdapter adapter;
     private NavController navController;
     private Button newCard;
+    private ViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +51,8 @@ public class CartasFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         newCard = view.findViewById(R.id.btNewCard);
+
+        viewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
 
         newCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +73,7 @@ public class CartasFragment extends Fragment {
                 builder.setNegativeButton("Importar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        viewModel.descargarPaquete();
                     }
                 });
 
