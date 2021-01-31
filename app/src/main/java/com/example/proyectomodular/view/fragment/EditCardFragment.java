@@ -240,10 +240,25 @@ public class EditCardFragment extends Fragment {
 
 
     private void textoBotones(List<Pregunta> preguntas) {
-        btRes1.setText(preguntas.get(0).getPregunta());
-        btRes2.setText(preguntas.get(1).getPregunta());
-        btRes3.setText(preguntas.get(2).getPregunta());
-        btRes4.setText(preguntas.get(3).getPregunta());
+        if(preguntas.size()==1){
+            btRes1.setText(preguntas.get(0).getPregunta());
+        }else if(preguntas.size()==2){
+            btRes1.setText(preguntas.get(0).getPregunta());
+            btRes2.setText(preguntas.get(1).getPregunta());
+        }else if(preguntas.size()==3){
+            btRes1.setText(preguntas.get(0).getPregunta());
+            btRes2.setText(preguntas.get(1).getPregunta());
+            btRes3.setText(preguntas.get(2).getPregunta());
+        }else if(preguntas.size()==4){
+            btRes1.setText(preguntas.get(0).getPregunta());
+            btRes2.setText(preguntas.get(1).getPregunta());
+            btRes3.setText(preguntas.get(2).getPregunta());
+            btRes4.setText(preguntas.get(3).getPregunta());
+
+        }else if(preguntas.size()==5){
+
+        }
+
     }
 
 

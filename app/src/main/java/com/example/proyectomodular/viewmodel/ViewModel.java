@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.proyectomodular.model.Contacto;
 import com.example.proyectomodular.model.Repository;
 import com.example.proyectomodular.model.room.entity.Carta;
+import com.example.proyectomodular.model.room.entity.CartaConPregunta;
 import com.example.proyectomodular.model.room.entity.Pregunta;
 import com.example.proyectomodular.model.room.entity.Usuario;
 
@@ -34,10 +35,9 @@ public class ViewModel extends AndroidViewModel {
     }
 
 
-
-
-
-
+    public void descargarPaquete() {
+        repository.descargarPaquete();
+    }
 
     public MutableLiveData<Carta> getCartaAleatoria() {
         return repository.getCartaAleatoria();
@@ -205,4 +205,16 @@ public class ViewModel extends AndroidViewModel {
         repository.setEnviarContactos(enviarContactos);
     }
 
+
+    public MutableLiveData<List<CartaConPregunta>> getPaqueteCartas() {
+        return repository.getPaqueteCartas();
+    }
+
+    public Carta getCartaActualRotacion() {
+        return repository.getCartaActualRotacion();
+    }
+
+    public void setCartaActualRotacion(Carta cartaActualRotacion) {
+        repository.setCartaActualRotacion(cartaActualRotacion);
+    }
 }

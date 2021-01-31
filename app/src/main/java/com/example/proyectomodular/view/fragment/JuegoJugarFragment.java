@@ -56,6 +56,10 @@ public class JuegoJugarFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init();
+    }
+
+    private void init() {
         miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
         miViewModel.setPuntuacionPartidaActual(0);
         miViewModel.setNumeroRespuestasTotales(0);
@@ -87,6 +91,7 @@ public class JuegoJugarFragment extends Fragment {
 
                 miViewModel.updateUsuario(usuarioPartida);
 
+                miViewModel.setCartaActualRotacion(null);
                 navController.navigate(R.id.mostrarPuntuacionFragment);
 
             }
@@ -103,23 +108,42 @@ public class JuegoJugarFragment extends Fragment {
             }
         });
 
-        miViewModel.getCarta(miViewModel.getIdCartaAnterior());
-        miViewModel.getCartaAleatoria().observe(getActivity(), new Observer<Carta>() {
-            @Override
-            public void onChanged(Carta carta) {
-                miViewModel.setIdCartaAnterior(carta.getId());
-                tvNombreCarta.setText(carta.getNombreAnimal());
-                tvDescripcionCarta.setText(carta.getDescripcion());
+        cargaCarta();
+    }
 
-                if(getActivity()!=null){
-                    Glide.with(getActivity()).load(carta.getUrlFoto()).into(imgCarta);
-                    obtenerPreguntas(carta.getId());
-                }
+    private void cargaCarta() {
+        if(miViewModel.getCartaActualRotacion()!=null){
+            Carta cartaActual = miViewModel.getCartaActualRotacion();
+            miViewModel.setIdCartaAnterior(cartaActual.getId());
+            tvNombreCarta.setText(cartaActual.getNombreAnimal());
+            tvDescripcionCarta.setText(cartaActual.getDescripcion());
 
-
-
+            if(getActivity()!=null){
+                Glide.with(getActivity()).load(cartaActual.getUrlFoto()).into(imgCarta);
+                obtenerPreguntas(cartaActual.getId());
             }
-        });
+
+        }else {
+            miViewModel.getCarta(miViewModel.getIdCartaAnterior());
+            miViewModel.getCartaAleatoria().observe(getActivity(), new Observer<Carta>() {
+                @Override
+                public void onChanged(Carta carta) {
+                    miViewModel.setIdCartaAnterior(carta.getId());
+                    miViewModel.setCartaActualRotacion(carta);
+                    tvNombreCarta.setText(carta.getNombreAnimal());
+                    tvDescripcionCarta.setText(carta.getDescripcion());
+
+                    if(getActivity()!=null){
+                        Glide.with(getActivity()).load(carta.getUrlFoto()).into(imgCarta);
+                        obtenerPreguntas(carta.getId());
+                    }
+
+
+
+                }
+            });
+
+        }
 
 
     }

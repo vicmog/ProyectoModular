@@ -12,11 +12,18 @@ import com.example.proyectomodular.model.room.dao.CartaDao;
 import com.example.proyectomodular.model.room.dao.PreguntaDao;
 import com.example.proyectomodular.model.room.dao.UsuarioDao;
 import com.example.proyectomodular.model.room.entity.Carta;
+import com.example.proyectomodular.model.room.entity.CartaConPregunta;
 import com.example.proyectomodular.model.room.entity.Pregunta;
 import com.example.proyectomodular.model.room.entity.Usuario;
 import com.example.proyectomodular.util.ApplicationThread;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Repository {
 
@@ -29,6 +36,19 @@ public class Repository {
     private long idCarta;
     private Carta editarCarta;
     private List<Pregunta> editarPreguntas;
+    private MutableLiveData<List<CartaConPregunta>> paqueteCartas = new MutableLiveData<>();
+
+    private Carta CartaActualRotacion;
+
+    public Carta getCartaActualRotacion() {
+        return CartaActualRotacion;
+    }
+
+    public void setCartaActualRotacion(Carta cartaActualRotacion) {
+        CartaActualRotacion = cartaActualRotacion;
+    }
+
+    private CartaClient client;
 
     public Pregunta getEditarPregunta() {
         return editarPregunta;
@@ -68,10 +88,69 @@ public class Repository {
     private List<Contacto> enviarContactos;
 
     public Repository(Context context){
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://informatica.ieszaidinvergeles.org:9033/laraveles/appAnimalesSalvajes/public/api/").addConverterFactory(GsonConverterFactory.create()).build();
+        client = retrofit.create(CartaClient.class);
         db = GameDataBase.getDb(context);
         cartaDao = db.getCartaDao();
         preguntaDao = db.getPreguntaDao();
         usuarioDao = db.getUsuarioDao();
+    }
+
+    public MutableLiveData<List<CartaConPregunta>> getPaqueteCartas() {
+        return paqueteCartas;
+    }
+
+    public void descargarPaquete(){
+        Call<List<CartaConPregunta>> paquete = client.getCarta();
+        paquete.enqueue(new Callback<List<CartaConPregunta>>() {
+            @Override
+            public void onResponse(Call<List<CartaConPregunta>> call, Response<List<CartaConPregunta>> response) {
+                ApplicationThread.threadExecutorPool.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                           // Log.v("ZZZ",response.body().toString());
+                            String descripcion,nombre,url;
+                            List<Pregunta>listaPreguntas;
+                            Pregunta pregunta;
+                            long id;
+
+                            List<CartaConPregunta>list = response.body();
+
+                            for (int i = list.size()-1; i >= 0 ; i--) {
+
+                                descripcion = list.get(i).getDescripcion();
+                                url = list.get(i).getUrl();
+                                nombre = list.get(i).getNombre();
+                                Carta carta = new Carta(url,nombre,descripcion);
+
+                                id = cartaDao.insert(carta);
+                                listaPreguntas = list.get(i).getPreguntas();
+
+                                for (int j = 0; j < listaPreguntas.size(); j++) {
+                                    pregunta = listaPreguntas.get(j);
+                                    pregunta.setIdCarta(id);
+                                    preguntaDao.insert(pregunta);
+
+                                }
+
+                            }
+
+                        }catch(Exception e){
+                            Log.v("ZZZ","Exception catch "+e.getLocalizedMessage());
+                        }
+
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFailure(Call<List<CartaConPregunta>> call, Throwable t) {
+                Log.v("ZZZ",t.getLocalizedMessage());
+            }
+        });
     }
 
 
@@ -245,9 +324,7 @@ public class Repository {
                     long id = cartaDao.insert(carta);
                     cardId.postValue(id);
 
-                    preguntaDao.insert(new Pregunta(id,"De que color es","Naranja","Azul","Verde","Marron"));
-                    preguntaDao.insert(new Pregunta(id,"Pregunta2","Naranja","Azul","Verde","Marron"));
-                    preguntaDao.insert(new Pregunta(id,"Pregunta3","Naranja","Azul","Verde","Marron"));
+
                 } catch (Exception e) {
                     Log.v("insertCarta", e.toString());
                 }

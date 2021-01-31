@@ -49,35 +49,20 @@ public class JuegoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init();
+    }
 
-
-
-        bottomNavigationView = view.findViewById(R.id.bottom_navigation_juego);
+    private void init() {
+        bottomNavigationView = getView().findViewById(R.id.bottom_navigation_juego);
         miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
 
         usuarios = new ArrayList<>();
         miViewModel.setPuntuacionPartidaActual(0);
         miViewModel.setUsuarioJuegoJugador(new Usuario());
 
-//        miViewModel.insertUsuario(new Usuario("Pepe",R.drawable.profile1,1,1));
-//        Carta carta1 = new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg","Gato","Gato atigrado");
-//        miViewModel.insertCarta(carta1);
-//
-//
-//        miViewModel.insertPregunta(new Pregunta(1,"De que color es","Naranja","Naranja","Verde","Marron","Azul"));
-//        miViewModel.insertPregunta(new Pregunta(1,"Es pequeño","Grande","Pequeño","Enorme","Grande","Muy grande"));
-//          //#0075AD
-            //#2DB7FA
-            //#AD6610
-            //#FFAC47
-            //#FA9E2E
-
-       // miViewModel.insertPregunta(new Pregunta(1,"nueva","nueva","nueva","nueva","nueva","nueva"));
-
-
         bottomNavigationView.setSelectedItemId(R.id.jugarPartida);
 
-        navController = Navigation.findNavController(view);
+        navController = Navigation.findNavController(getView());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -93,6 +78,10 @@ public class JuegoFragment extends Fragment {
                 return true;
             }
         });
+        cargaRecycler();
+    }
+
+    private void cargaRecycler() {
 
         RecyclerView recyclerViewJuego = getView().findViewById(R.id.recyclerViewJugadorElegido);
         AdaptadorJugadorJuego adapter = new AdaptadorJugadorJuego(getActivity(),usuarios,getView());
@@ -103,13 +92,11 @@ public class JuegoFragment extends Fragment {
         miViewModel.getLiveUsuarioList().observe(getActivity(), new Observer<List<Usuario>>() {
             @Override
             public void onChanged(List<Usuario> users) {
-            usuarios.clear();
-            usuarios.addAll(users);
-            adapter.notifyDataSetChanged();
+                usuarios.clear();
+                usuarios.addAll(users);
+                adapter.notifyDataSetChanged();
             }
         });
-
-
 
 
     }
