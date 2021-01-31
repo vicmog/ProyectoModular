@@ -209,4 +209,12 @@ public class ViewModel extends AndroidViewModel {
     public MutableLiveData<List<CartaConPregunta>> getPaqueteCartas() {
         return repository.getPaqueteCartas();
     }
+
+    public Carta getCartaActualRotacion() {
+        return repository.getCartaActualRotacion();
+    }
+
+    public void setCartaActualRotacion(Carta cartaActualRotacion) {
+        repository.setCartaActualRotacion(cartaActualRotacion);
+    }
 }

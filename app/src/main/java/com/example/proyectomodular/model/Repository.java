@@ -38,6 +38,16 @@ public class Repository {
     private List<Pregunta> editarPreguntas;
     private MutableLiveData<List<CartaConPregunta>> paqueteCartas = new MutableLiveData<>();
 
+    private Carta CartaActualRotacion;
+
+    public Carta getCartaActualRotacion() {
+        return CartaActualRotacion;
+    }
+
+    public void setCartaActualRotacion(Carta cartaActualRotacion) {
+        CartaActualRotacion = cartaActualRotacion;
+    }
+
     private CartaClient client;
 
     public Pregunta getEditarPregunta() {
@@ -99,6 +109,7 @@ public class Repository {
                     @Override
                     public void run() {
                         try {
+                           // Log.v("ZZZ",response.body().toString());
                             String descripcion,nombre,url;
                             List<Pregunta>listaPreguntas;
                             Pregunta pregunta;
@@ -106,7 +117,7 @@ public class Repository {
 
                             List<CartaConPregunta>list = response.body();
 
-                            for (int i = 0; i < list.size(); i++) {
+                            for (int i = list.size()-1; i >= 0 ; i--) {
 
                                 descripcion = list.get(i).getDescripcion();
                                 url = list.get(i).getUrl();
@@ -126,7 +137,7 @@ public class Repository {
                             }
 
                         }catch(Exception e){
-
+                            Log.v("ZZZ","Exception catch "+e.getLocalizedMessage());
                         }
 
 
