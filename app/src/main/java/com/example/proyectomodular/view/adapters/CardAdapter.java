@@ -66,9 +66,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.MyViewHolder holder, int position) {
 
-
+        String descr = cardlist.get(position).getDescripcion();
+        String descr2 = descr.substring(0,90)+" [...]";
+        Log.v("asd",descr2);
         holder.name.setText(cardlist.get(position).getNombreAnimal());
-        holder.decr.setText(cardlist.get(position).getDescripcion());
+        holder.decr.setText(descr2);
         Glide.with(context)
                 .load(cardlist.get(position).getUrlFoto())
                 .into(holder.img);

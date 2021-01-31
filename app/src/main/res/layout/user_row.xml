@@ -32,13 +32,16 @@
 
     <TextView
         android:id="@+id/rowUserStats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="259dp"
+        android:layout_height="62dp"
         android:text="TextView"
         android:textColor="@color/purple_500"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toEndOf="@+id/userPic"
-        app:layout_constraintTop_toBottomOf="@+id/rowUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/rowUsername"
+        app:layout_constraintVertical_bias="0.24000001" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
