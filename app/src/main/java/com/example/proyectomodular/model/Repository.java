@@ -119,19 +119,22 @@ public class Repository {
 
                             for (int i = list.size()-1; i >= 0 ; i--) {
 
-                                descripcion = list.get(i).getDescripcion();
-                                url = list.get(i).getUrl();
-                                nombre = list.get(i).getNombre();
-                                Carta carta = new Carta(url,nombre,descripcion);
+                                if(list.get(i).getPreguntas().size()==4){
 
-                                id = cartaDao.insert(carta);
-                                listaPreguntas = list.get(i).getPreguntas();
+                                    descripcion = list.get(i).getDescripcion();
+                                    url = list.get(i).getUrl();
+                                    nombre = list.get(i).getNombre();
+                                    Carta carta = new Carta(url,nombre,descripcion);
 
-                                for (int j = 0; j < listaPreguntas.size(); j++) {
-                                    pregunta = listaPreguntas.get(j);
-                                    pregunta.setIdCarta(id);
-                                    preguntaDao.insert(pregunta);
+                                    id = cartaDao.insert(carta);
+                                    listaPreguntas = list.get(i).getPreguntas();
 
+                                    for (int j = 0; j < listaPreguntas.size(); j++) {
+                                        pregunta = listaPreguntas.get(j);
+                                        pregunta.setIdCarta(id);
+                                        preguntaDao.insert(pregunta);
+
+                                    }
                                 }
 
                             }
