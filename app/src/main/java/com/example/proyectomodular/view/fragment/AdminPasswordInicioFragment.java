@@ -66,6 +66,11 @@ private ViewModel miViewModel;
                     navController.navigate(R.id.hallFameFragment);
                     Carta carta1 = new Carta("https://animalmascota.com/wp-content/2015/08/leon-curiosidades.jpg","Leon","El cuerpo del león es musculoso y viene acompañado de una cabeza grande con un hocico corto y ancho, de donde sobresalen sus largos y afilados caninos y sus bigotes esenciales para que puedan guiarse en la oscuridad.");
                     miViewModel.insertCarta(carta1);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto vive en cautividad?","Hasta 15 años","Hasta 25 años","Hasta 10 años","Hasta 40 años"));
                     miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto vive un leon en libertad?","De 12 a 16 años","Es inmortal","De 20 a 30 años","De 10 a 40 años"));
                     miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto llega a medir el león africano?","Hasta 3 metos","Hasta 10 metros","Hasta 5 metros","Hasta 1 metro"));
