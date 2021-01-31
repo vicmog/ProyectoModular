@@ -62,34 +62,21 @@ private ViewModel miViewModel;
             public void onClick(View v) {
 
                 if(compruebaClaves()){
-                    miViewModel.insertUsuario(new Usuario("Pepe",R.drawable.profile1,1,1));
+
                     navController.navigate(R.id.hallFameFragment);
                     Carta carta1 = new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg","Gato","Gato atigrado");
                     miViewModel.insertCarta(carta1);
                     miViewModel.insertPregunta(new Pregunta(1,"De que color es","Naranja","Azul","Verde","Marron"));
                     miViewModel.insertPregunta(new Pregunta(1,"Pregunta2","Naranja","Azul","Verde","Marron"));
                     miViewModel.insertPregunta(new Pregunta(1,"Pregunta3","Naranja","Azul","Verde","Marron"));
-//                    miViewModel.getCardId().observe(getActivity(), new Observer<Long>() {
-//                        @Override
-//                        public void onChanged(Long aLong) {
-//
-//                        }
-//                    });
+
 
                     Carta carta2 = new Carta("https://informatica.ieszaidinvergeles.org:9033/_107435681_perro1.jpg","Perro","Perro Grande");
                     miViewModel.insertCarta(carta2);
                     miViewModel.insertPregunta(new Pregunta(2,"De que color es","Naranja","Azul","Verde","Marron"));
                     miViewModel.insertPregunta(new Pregunta(2,"Pregunta2","Naranja","Azul","Verde","Marron"));
                     miViewModel.insertPregunta(new Pregunta(2,"Pregunta3","Naranja","Azul","Verde","Marron"));
-//                    miViewModel.getCardId().observe(getActivity(), new Observer<Long>() {
-//                        @Override
-//                        public void onChanged(Long aLong) {
-//
-//                        }
-//                    });
-                    //Log.v("ZZZ",carta1.toString());
-                   // miViewModel.insertPregunta(new Pregunta(1,"De que color es","Naranja","Naranja","Verde","Marron","Azul"));
-                    //miViewModel.insertPregunta(new Pregunta(1,"Es pequeño","Grande","Pequeño","Enorme","Grande","Muy grande"));
+
 
                 }
 

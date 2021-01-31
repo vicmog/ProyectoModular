@@ -45,6 +45,8 @@ public class JuegoJugarFragment extends Fragment {
     private List<Pregunta> preguntas = new ArrayList<>();
     private FloatingActionButton btSiguiente,btCancelar;
     private RecyclerView recyclerPreguntas;
+    private Animation animationScale;
+    private Animation animationTrans;
 
 
     @Override
@@ -60,6 +62,9 @@ public class JuegoJugarFragment extends Fragment {
     }
 
     private void init() {
+
+        animationScale = AnimationUtils.loadAnimation(getActivity(),R.anim.scale);
+        animationTrans = AnimationUtils.loadAnimation(getActivity(),R.anim.trans);
         miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
         miViewModel.setPuntuacionPartidaActual(0);
         miViewModel.setNumeroRespuestasTotales(0);
@@ -144,6 +149,12 @@ public class JuegoJugarFragment extends Fragment {
             });
 
         }
+        tvNombreCarta.startAnimation(animationScale);
+        imgCarta.startAnimation(animationScale);
+        tvDescripcionCarta.startAnimation(animationScale);
+        btCancelar.startAnimation(animationTrans);
+        btSiguiente.startAnimation(animationTrans);
+
 
 
     }
@@ -153,6 +164,7 @@ public class JuegoJugarFragment extends Fragment {
         AdaptadorPreguntasJuego adaptadorPreguntas = new AdaptadorPreguntasJuego(preguntas,getView(),getActivity());
         recyclerPreguntas.setAdapter(adaptadorPreguntas);
         recyclerPreguntas.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerPreguntas.startAnimation(animationScale);
 
         miViewModel.getAllPreguntas(id).observe(getActivity(), new Observer<List<Pregunta>>() {
             @Override

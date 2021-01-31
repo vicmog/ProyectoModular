@@ -71,7 +71,7 @@ public class HallFameFragment extends Fragment {
         });
 
         viewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
-        viewModel.insertUsuario(new Usuario("Tete",R.drawable.avatar,1,30));
+
 
         recyclerView = view.findViewById(R.id.recyclerPuntuacion);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

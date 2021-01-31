@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.proyectomodular.R;
@@ -38,6 +41,7 @@ public class JuegoFragment extends Fragment {
     private NavController navController;
     private ViewModel miViewModel;
     private List<Usuario> usuarios;
+    private CardView cardView;
 
 
     @Override
@@ -53,6 +57,7 @@ public class JuegoFragment extends Fragment {
     }
 
     private void init() {
+
         bottomNavigationView = getView().findViewById(R.id.bottom_navigation_juego);
         miViewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
 
@@ -82,11 +87,12 @@ public class JuegoFragment extends Fragment {
     }
 
     private void cargaRecycler() {
-
+        Animation animationtran = AnimationUtils.loadAnimation(getActivity(),R.anim.trans);
         RecyclerView recyclerViewJuego = getView().findViewById(R.id.recyclerViewJugadorElegido);
         AdaptadorJugadorJuego adapter = new AdaptadorJugadorJuego(getActivity(),usuarios,getView());
         recyclerViewJuego.setAdapter(adapter);
         recyclerViewJuego.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewJuego.startAnimation(animationtran);
 
 
         miViewModel.getLiveUsuarioList().observe(getActivity(), new Observer<List<Usuario>>() {
