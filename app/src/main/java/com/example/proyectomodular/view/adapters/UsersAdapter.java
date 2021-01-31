@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,11 +67,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull UsersAdapter.MyViewHolder holder, int position) {
 
         if(userlist.get(position).getNRespuestas()!=0){
-            int stats1 = (int)(userlist.get(position).getNRespuestasCorrectas())/(userlist.get(position).getNRespuestas());
-            holder.stats.setText(stats1+"%");
+            double stats1 = userlist.get(position).getNRespuestasCorrectas();
+            stats1/=userlist.get(position).getNRespuestas();
+            stats1*=100;
+            holder.stats.setText("Porcentaje de acierto: "+stats1+""+"%");
 
         }else{
-            holder.stats.setText(0+"");
+            holder.stats.setText("Aun no ha jugado");
         }
 
 

@@ -7,6 +7,6 @@
     <string name="str_salir_admin">Salir</string>
     <string name="str_hint_password">Password</string>
     <string name="str_hint_retry_pass">Retry Password</string>
-    <string name="str_juego_elige">Elecciòn de Jugador</string>
+    <string name="str_juego_elige">Elección de Jugador</string>
     <string name="str_puntuacion_resultado">Tu puntuacion ha sido :</string>
 </resources>

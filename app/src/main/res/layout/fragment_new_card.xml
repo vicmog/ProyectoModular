@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_200"
     tools:context=".view.fragment.NewCardFragment">
 
     <Button
         android:id="@+id/ncbtSubirfoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Subir foto"
         app:layout_constraintBottom_toTopOf="@+id/ncetNombre"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,8 +55,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Nombre"
         android:inputType="textPersonName"
+        android:textColor="@color/purple_500"
         app:layout_constraintBottom_toTopOf="@+id/ncedDescr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -64,8 +69,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Descripcion"
         android:inputType="textPersonName"
+        android:textColor="@color/purple_500"
         app:layout_constraintBottom_toTopOf="@+id/ncbtSiguiente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

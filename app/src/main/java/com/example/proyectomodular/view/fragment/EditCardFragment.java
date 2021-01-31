@@ -23,6 +23,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -59,6 +61,7 @@ public class EditCardFragment extends Fragment {
     private NavController navController;
     private final int PHOTO_SELECTED=1;
     private String url;
+    private Animation animationScale;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +74,7 @@ public class EditCardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        animationScale = AnimationUtils.loadAnimation(getActivity(),R.anim.scale);
         etNombre = view.findViewById(R.id.tvNombre);
         etDescr = view.findViewById(R.id.tvDescr);
         pic = view.findViewById(R.id.ivPic);
@@ -82,6 +86,18 @@ public class EditCardFragment extends Fragment {
         btRes3 = view.findViewById(R.id.btRes3);
         btRes4 = view.findViewById(R.id.btRes4);
         atras = view.findViewById(R.id.btAtras);
+
+        etNombre.startAnimation(animationScale);
+        etDescr.startAnimation(animationScale);
+        pic.startAnimation(animationScale);
+        btPic.startAnimation(animationScale);
+        btNombre.startAnimation(animationScale);
+        btDescr.startAnimation(animationScale);
+        btRes1.startAnimation(animationScale);
+        btRes2.startAnimation(animationScale);
+        btRes3.startAnimation(animationScale);
+        btRes4.startAnimation(animationScale);
+        atras.startAnimation(animationScale);
 
         ViewModel vm = new ViewModelProvider((ViewModelStoreOwner) getContext()).get(ViewModel.class);
 

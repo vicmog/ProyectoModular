@@ -11,7 +11,7 @@
         android:id="@+id/ivPic"
         android:layout_width="165dp"
         android:layout_height="170dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintBottom_toTopOf="@+id/btChangePic"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,6 +25,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/btCambiaNombre"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,9 +38,8 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/btCambiaDescr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <Button
         android:id="@+id/btChangePic"
@@ -49,9 +49,8 @@
         android:text="Cambiar Foto"
         android:textColor="@color/botones"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toEndOf="@+id/btCambiaNombre"
-        app:layout_constraintStart_toStartOf="@+id/btCambiaNombre"
-        app:layout_constraintTop_toBottomOf="@+id/btCambiaNombre" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btCambiaNombre"
@@ -60,10 +59,10 @@
         android:layout_height="wrap_content"
         android:text="Cambiar nombre"
         android:textColor="@color/botones"
-        app:layout_constraintBottom_toTopOf="@+id/btChangePic"
-        app:layout_constraintEnd_toEndOf="@+id/tvNombre"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/tvNombre"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
     <Button
@@ -73,10 +72,10 @@
         android:layout_height="wrap_content"
         android:text="Cambiar Descripcion"
         android:textColor="@color/botones"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescr" />
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
     <Button
         android:id="@+id/btRes4"
@@ -85,10 +84,10 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:textColor="@color/botones"
-        app:layout_constraintBottom_toTopOf="@+id/btAtras"
-        app:layout_constraintEnd_toEndOf="@+id/btAtras"
-        app:layout_constraintStart_toStartOf="@+id/btAtras"
-        app:layout_constraintTop_toBottomOf="@+id/btRes3" />
+        app:layout_constraintBottom_toBottomOf="@+id/btRes2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btRes2" />
 
     <Button
         android:id="@+id/btRes1"
@@ -97,10 +96,11 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:textColor="@color/botones"
-        app:layout_constraintBottom_toTopOf="@+id/btRes2"
-        app:layout_constraintEnd_toEndOf="@+id/btRes2"
-        app:layout_constraintStart_toStartOf="@+id/btRes2"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintEnd_toStartOf="@+id/btRes3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btRes2" />
 
     <Button
         android:id="@+id/btRes2"
@@ -109,10 +109,11 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:textColor="@color/botones"
-        app:layout_constraintBottom_toTopOf="@+id/btRes3"
-        app:layout_constraintEnd_toEndOf="@+id/btRes3"
-        app:layout_constraintStart_toStartOf="@+id/btRes3"
-        app:layout_constraintTop_toBottomOf="@+id/btRes1" />
+        app:layout_constraintBottom_toTopOf="@+id/btRes1"
+        app:layout_constraintEnd_toStartOf="@+id/btRes4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btChangePic" />
 
     <Button
         android:id="@+id/btRes3"
@@ -121,17 +122,17 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:textColor="@color/botones"
-        app:layout_constraintBottom_toTopOf="@+id/btRes4"
-        app:layout_constraintEnd_toEndOf="@+id/btRes4"
-        app:layout_constraintStart_toStartOf="@+id/btRes4"
-        app:layout_constraintTop_toBottomOf="@+id/btRes2" />
+        app:layout_constraintBottom_toBottomOf="@+id/btRes1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btRes1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.26" />
 
     <Button
         android:id="@+id/btAtras"
@@ -140,19 +141,28 @@
         android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.43" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8832117" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,14 +43,38 @@ public class ModificarPicFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        pics.add(R.drawable.av1);
-        pics.add(R.drawable.av2);
-        pics.add(R.drawable.av3);
-        pics.add(R.drawable.av4);
-        pics.add(R.drawable.av5);
-        pics.add(R.drawable.av6);
-        pics.add(R.drawable.av7);
-        pics.add(R.drawable.av8);
+        pics.add(R.drawable.av68);
+        pics.add(R.drawable.av69);
+        pics.add(R.drawable.av70);
+        pics.add(R.drawable.av71);
+        pics.add(R.drawable.av72);
+        pics.add(R.drawable.av73);
+        pics.add(R.drawable.av74);
+        pics.add(R.drawable.av75);
+        pics.add(R.drawable.av76);
+        pics.add(R.drawable.av77);
+        pics.add(R.drawable.av78);
+        pics.add(R.drawable.av79);
+        pics.add(R.drawable.av80);
+        pics.add(R.drawable.av81);
+        pics.add(R.drawable.av82);
+        pics.add(R.drawable.av83);
+        pics.add(R.drawable.av84);
+        pics.add(R.drawable.av85);
+        pics.add(R.drawable.av86);
+        pics.add(R.drawable.av87);
+        pics.add(R.drawable.av88);
+        pics.add(R.drawable.av89);
+        pics.add(R.drawable.av90);
+        pics.add(R.drawable.av91);
+        pics.add(R.drawable.av92);
+        pics.add(R.drawable.av93);
+        pics.add(R.drawable.av94);
+        pics.add(R.drawable.av95);
+        pics.add(R.drawable.av96);
+        pics.add(R.drawable.av97);
+        pics.add(R.drawable.av98);
+        pics.add(R.drawable.av99);
 
         initRecyclerView();
 
@@ -58,7 +83,7 @@ public class ModificarPicFragment extends Fragment {
     private void initRecyclerView() {
 
         RecyclerView recyclerView = getView().findViewById(R.id.modificarPicRecycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         adapter = new ModifyPicAdapter(getActivity(), getActivity().getApplication());
         adapter.setMainList(pics);

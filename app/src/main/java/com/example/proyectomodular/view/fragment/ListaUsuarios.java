@@ -17,6 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.example.proyectomodular.R;
@@ -32,6 +34,7 @@ public class ListaUsuarios extends Fragment {
     public static ViewModel v;
     public UsersAdapter adapter;
     private NavController navController;
+    private Animation animationTrans;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +48,7 @@ public class ListaUsuarios extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        animationTrans = AnimationUtils.loadAnimation(getActivity(),R.anim.trans);
 
         v = new ViewModelProvider(this).get(ViewModel.class);
         v.getLiveUsuarioList().observe(getActivity(), new Observer<List<Usuario>>() {
@@ -79,6 +83,7 @@ public class ListaUsuarios extends Fragment {
         adapter = new UsersAdapter(getActivity(), getActivity().getApplication());
         adapter.setMainList(userList);
         recyclerView.setAdapter(adapter);
+        recyclerView.startAnimation(animationTrans);
     }
 
 

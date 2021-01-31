@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_200"
     tools:context=".view.fragment.PreguntaFragment">
 
     <EditText
@@ -11,45 +12,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Respuesta correcta"
         android:inputType="textPersonName"
-        android:textColorHint="#14F42A"
+        android:textColor="@color/purple_500"
+        android:textColorHint="#45F856"
         app:layout_constraintBottom_toTopOf="@+id/edRes2"
         app:layout_constraintEnd_toEndOf="@+id/edRes2"
         app:layout_constraintStart_toStartOf="@+id/edRes2"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toBottomOf="@+id/etPregunta" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Pregunta:   "
+        android:textColor="@color/purple_500"
         android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvNumPregunta"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumPregunta"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvNumPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="1"
+        android:textColor="@color/purple_500"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edRes3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Respuesta erronea"
         android:inputType="textPersonName"
-        android:textColorHint="#F60707"
+        android:textColor="@color/purple_500"
+        android:textColorHint="#FD4B4B"
         app:layout_constraintBottom_toTopOf="@+id/edRes4"
         app:layout_constraintEnd_toEndOf="@+id/edRes4"
         app:layout_constraintStart_toStartOf="@+id/edRes4"
@@ -60,9 +67,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Respuesta erronea"
         android:inputType="textPersonName"
-        android:textColorHint="#FB0505"
+        android:textColor="@color/purple_500"
+        android:textColorHint="#FD4B4B"
         app:layout_constraintBottom_toTopOf="@+id/edRes3"
         app:layout_constraintEnd_toEndOf="@+id/edRes3"
         app:layout_constraintStart_toStartOf="@+id/edRes3"
@@ -73,9 +82,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Respuesta erronea"
         android:inputType="textPersonName"
-        android:textColorHint="#ED1010"
+        android:textColor="@color/purple_500"
+        android:textColorHint="#FD4B4B"
         app:layout_constraintBottom_toTopOf="@+id/btSiguiente"
         app:layout_constraintEnd_toEndOf="@+id/btSiguiente"
         app:layout_constraintStart_toStartOf="@+id/btSiguiente"
@@ -85,29 +96,25 @@
         android:id="@+id/btSiguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Siguiente"
+        android:textColor="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edRes4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintTop_toBottomOf="@+id/edRes4"
+        tools:layout_editor_absoluteX="152dp" />
 
     <EditText
         android:id="@+id/etPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="Pregunta"
         android:inputType="textPersonName"
-        android:text="PREGUNTA"
+        android:textColor="@color/purple_500"
+        app:layout_constraintBottom_toTopOf="@+id/edRes1"
         app:layout_constraintEnd_toEndOf="@+id/edRes1"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/edRes1"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

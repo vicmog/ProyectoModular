@@ -17,6 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,13 +32,16 @@ import com.example.proyectomodular.viewmodel.ViewModel;
 
 public class EditJugadorFragment extends Fragment {
 
-    Button btatras;
-    Button bteditPic;
-    Button btguardar;
-    Button bteditName;
-    TextView editTextName;
-    ImageView editPic;
-    NavController navController;
+    private Button btatras;
+    private Button bteditPic;
+    private Button btguardar;
+    private Button bteditName;
+    private TextView editTextName;
+    private ImageView editPic;
+    private NavController navController;
+    private TextView stats;
+    private Animation animationScale;
+    private TextView textview12;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,17 +54,42 @@ public class EditJugadorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        animationScale = AnimationUtils.loadAnimation(getActivity(),R.anim.scale);
         btatras = view.findViewById(R.id.btAtrasEdit);
         bteditName = view.findViewById(R.id.btEditNick);
         bteditPic = view.findViewById(R.id.btEditPic);
         editPic = view.findViewById(R.id.editPic);
         editTextName = view.findViewById(R.id.editTextName);
         btguardar = view.findViewById(R.id.btguardarEdit);
+        stats = view.findViewById(R.id.stats);
+        textview12 = view.findViewById(R.id.textView12);
+
+        btatras.startAnimation(animationScale);
+        bteditName.startAnimation(animationScale);
+        bteditPic.startAnimation(animationScale);
+        editPic.startAnimation(animationScale);
+        editTextName.startAnimation(animationScale);
+        btguardar.startAnimation(animationScale);
+        stats.startAnimation(animationScale);
+        textview12.startAnimation(animationScale);
+
 
         navController = Navigation.findNavController(view);
 
         ViewModel vm = new ViewModelProvider(getActivity()).get(ViewModel.class);
         Usuario user = vm.getEditar();
+
+
+        if(user.getNRespuestas()>0){
+            double stats1 = user.getNRespuestasCorrectas();
+            stats1/=user.getNRespuestas();
+            stats1*=100;
+            stats.setText(stats1+"%");
+        }else{
+            stats.setText("Aún no ha jugado");
+        }
+
+
 
         editTextName.setText(vm.getEditar().getNombre());
         editPic.setImageResource(vm.getEditar().getAvatar());

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.AdminFragment" >
+    android:background="@color/purple_200"
+    tools:context=".view.fragment.AdminFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_admin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#F8F8F8"
+        android:background="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,6 +22,8 @@
         android:id="@+id/tabLayoutAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,6 +32,7 @@
             android:id="@+id/TabItemUsuarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#D52323"
             android:text="Usuarios" />
 
         <com.google.android.material.tabs.TabItem
@@ -44,6 +48,7 @@
         android:id="@+id/viewPagerAdmin"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/purple_200"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_admin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
