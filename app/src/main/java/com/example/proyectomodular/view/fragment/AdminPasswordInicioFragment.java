@@ -64,18 +64,20 @@ private ViewModel miViewModel;
                 if(compruebaClaves()){
 
                     navController.navigate(R.id.hallFameFragment);
-                    Carta carta1 = new Carta("https://informatica.ieszaidinvergeles.org:9033/gato-atigrado-triste_0.jpg","Gato","Gato atigrado");
+                    Carta carta1 = new Carta("https://animalmascota.com/wp-content/2015/08/leon-curiosidades.jpg","Leon","El cuerpo del león es musculoso y viene acompañado de una cabeza grande con un hocico corto y ancho, de donde sobresalen sus largos y afilados caninos y sus bigotes esenciales para que puedan guiarse en la oscuridad.");
                     miViewModel.insertCarta(carta1);
-                    miViewModel.insertPregunta(new Pregunta(1,"De que color es","Naranja","Azul","Verde","Marron"));
-                    miViewModel.insertPregunta(new Pregunta(1,"Pregunta2","Naranja","Azul","Verde","Marron"));
-                    miViewModel.insertPregunta(new Pregunta(1,"Pregunta3","Naranja","Azul","Verde","Marron"));
+                    miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto vive en cautividad?","Hasta 15 años","Hasta 25 años","Hasta 10 años","Hasta 40 años"));
+                    miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto vive un leon en libertad?","De 12 a 16 años","Es inmortal","De 20 a 30 años","De 10 a 40 años"));
+                    miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto llega a medir el león africano?","Hasta 3 metos","Hasta 10 metros","Hasta 5 metros","Hasta 1 metro"));
+                    miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto llega a pesar el león africano?","Hasta 250 kg","Hasta 100 kg","Hasta 400 kg","Hasta 1 tonelada"));
 
 
-                    Carta carta2 = new Carta("https://informatica.ieszaidinvergeles.org:9033/_107435681_perro1.jpg","Perro","Perro Grande");
+                    Carta carta2 = new Carta("https://kids.sandiegozoo.org/sites/default/files/2019-07/animal-hero-bonoborighte.jpg","Bonobo","Los bonobos se ven raramente fuera de su hábitat natural, por lo que no son tan conocidos como los chimpancés comunes. A primera vista son muy parecidos a estos, pero suelen tener la cara negra, las orejas más pequeñas y las piernas más largas.");
                     miViewModel.insertCarta(carta2);
-                    miViewModel.insertPregunta(new Pregunta(2,"De que color es","Naranja","Azul","Verde","Marron"));
-                    miViewModel.insertPregunta(new Pregunta(2,"Pregunta2","Naranja","Azul","Verde","Marron"));
-                    miViewModel.insertPregunta(new Pregunta(2,"Pregunta3","Naranja","Azul","Verde","Marron"));
+                    miViewModel.insertPregunta(new Pregunta(2,"¿Cuantos existen?","Unos 10.000","Unos 25.000","Menos de 3.000","Mas de 50.000"));
+                    miViewModel.insertPregunta(new Pregunta(2,"¿Donde se ubican?","En el congo","En Zambia","En el sudeste asiatico","En Madagascar"));
+                    miViewModel.insertPregunta(new Pregunta(2,"¿Como se organia su sociedad?","Es matriarcal","Es patriarcal","Todos son iguales","Son democraticos"));
+                    miViewModel.insertPregunta(new Pregunta(2,"¿Cual de las siguientes es correcta?","Son mas pacificos que los chimpances","Se parecen fisicamente a los orangutanes","Los ojos son de color rojo","Los bonobos estan siempre en guerra"));
 
 
                 }
