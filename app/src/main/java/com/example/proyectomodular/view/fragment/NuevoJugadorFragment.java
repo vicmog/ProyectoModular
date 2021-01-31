@@ -75,7 +75,7 @@ public class NuevoJugadorFragment extends Fragment {
         RecyclerView recyclerView = getView().findViewById(R.id.pictureChooseRecycler);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-        newPlayerAdapter adapter = new newPlayerAdapter(getActivity(), getActivity().getApplication());
+        newPlayerAdapter adapter = new newPlayerAdapter(getActivity(), getActivity().getApplication(), getView());
         adapter.setMainList(pics);
         recyclerView.setAdapter(adapter);
 

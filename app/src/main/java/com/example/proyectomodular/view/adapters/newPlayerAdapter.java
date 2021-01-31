@@ -40,10 +40,12 @@ public class newPlayerAdapter extends RecyclerView.Adapter<newPlayerAdapter.MyVi
     private ArrayList<Integer> pics;
     private Context context;
     private Application application;
+    private View view;
 
-    public newPlayerAdapter(Context context, Application application){
+    public newPlayerAdapter(Context context, Application application, View vew){
         this.context=context;
         this.application = application;
+        this.view = view;
     }
 
     public void setMainList(ArrayList<Integer> lista){
@@ -87,7 +89,7 @@ public class newPlayerAdapter extends RecyclerView.Adapter<newPlayerAdapter.MyVi
                         ViewModel vm = new ViewModel(application);
                         vm.insertUsuario(user);
 
-                        NavController navController = Navigation.findNavController(v);
+                        NavController navController = Navigation.findNavController(view);
                         navController.navigate(R.id.adminFragment);
                         Toast.makeText(context, ""+user.getNombre()+" ha sido creado!", Toast.LENGTH_SHORT).show();
                     }

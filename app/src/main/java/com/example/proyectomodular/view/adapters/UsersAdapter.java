@@ -70,7 +70,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
             double stats1 = userlist.get(position).getNRespuestasCorrectas();
             stats1/=userlist.get(position).getNRespuestas();
             stats1*=100;
-            holder.stats.setText("Porcentaje de acierto: "+stats1+""+"%");
+            int stats2 = (int)stats1;
+            holder.stats.setText("Porcentaje de acierto: "+stats2+""+"%");
 
         }else{
             holder.stats.setText("Aun no ha jugado");

@@ -84,7 +84,8 @@ public class EditJugadorFragment extends Fragment {
             double stats1 = user.getNRespuestasCorrectas();
             stats1/=user.getNRespuestas();
             stats1*=100;
-            stats.setText(stats1+"%");
+            int stats2 = (int)stats1;
+            stats.setText(stats2+"%");
         }else{
             stats.setText("Aún no ha jugado");
         }
