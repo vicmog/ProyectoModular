@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +19,6 @@ import android.view.ViewGroup;
 
 import com.example.proyectomodular.R;
 import com.example.proyectomodular.model.room.entity.Usuario;
-import com.example.proyectomodular.util.OnItemClickListener;
 import com.example.proyectomodular.view.adapters.PuntuacionRecyclerAdapter;
 import com.example.proyectomodular.viewmodel.ViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,7 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HallFameFragment extends Fragment implements OnItemClickListener {
+public class HallFameFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
     private NavController navController;
@@ -78,7 +76,7 @@ public class HallFameFragment extends Fragment implements OnItemClickListener {
         recyclerView = view.findViewById(R.id.recyclerPuntuacion);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-        adapter = new PuntuacionRecyclerAdapter(jugadores,this);
+        adapter = new PuntuacionRecyclerAdapter(getActivity(),jugadores,getView());
         recyclerView.setAdapter(adapter);
 
         viewModel.getLiveUsuarioPuntuacionList().observe(getActivity(), new Observer<List<Usuario>>() {
@@ -92,10 +90,4 @@ public class HallFameFragment extends Fragment implements OnItemClickListener {
 
     }
 
-    @Override
-    public void onClick(Object usuario) {
-        viewModel.setUsuarioPuntuacion((Usuario)usuario);
-        NavHostFragment.findNavController(HallFameFragment.this).navigate(R.id.action_hallFameFragment_to_puntuacionFragment);
-
-    }
 }

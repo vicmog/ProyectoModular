@@ -1,5 +1,6 @@
 package com.example.proyectomodular.view.adapters;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,32 +8,37 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectomodular.R;
 import com.example.proyectomodular.model.room.entity.Usuario;
-import com.example.proyectomodular.util.OnItemClickListener;
+import com.example.proyectomodular.viewmodel.ViewModel;
 
 import java.util.List;
 
-public class PuntuacionRecyclerAdapter extends RecyclerView.Adapter<PuntuacionRecyclerAdapter.RecyclerViewHolder> implements View.OnClickListener {
+public class PuntuacionRecyclerAdapter extends RecyclerView.Adapter<PuntuacionRecyclerAdapter.RecyclerViewHolder> {
 
+    private ViewModel viewModel;
+    private Activity activity;
     private List<Usuario> jugadores;
-    private OnItemClickListener listener;
-    private View.OnClickListener listeneritem;
+    private View view;
 
-    public PuntuacionRecyclerAdapter(List<Usuario> jugadores, OnItemClickListener listener) {
+    public PuntuacionRecyclerAdapter(Activity activity, List<Usuario> jugadores, View view) {
+        this.activity = activity;
         this.jugadores = jugadores;
-        this.listener = listener;
+        this.view = view;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_puntuacion, parent, false);
-        vista.setOnClickListener(this);
+
+        viewModel = new ViewModelProvider((ViewModelStoreOwner) activity).get(ViewModel.class);
 
         RecyclerViewHolder holder = new RecyclerViewHolder(vista);
 
@@ -41,14 +47,16 @@ public class PuntuacionRecyclerAdapter extends RecyclerView.Adapter<PuntuacionRe
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+        NavController navController = Navigation.findNavController(view);
         Usuario jugador = jugadores.get(position);
         holder.posiciones.setText(position+1+".");
         holder.puntuaciones.setText(jugadores.get(position).getNRespuestasCorrectas()+"");
         holder.nombres.setText(jugadores.get(position).getNombre());
         holder.inner_layout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                listener.onClick(jugador);
+            public void onClick(View v) {
+                viewModel.setUsuarioPuntuacion(jugador);
+                navController.navigate(R.id.puntuacionFragment);
             }
         });
 //        holder.parent_layout.setOnClickListener(new View.OnClickListener() {
@@ -64,17 +72,6 @@ public class PuntuacionRecyclerAdapter extends RecyclerView.Adapter<PuntuacionRe
     @Override
     public int getItemCount() {
         return jugadores.size();
-    }
-
-    public void setOnClickListener(View.OnClickListener listener){
-        this.listeneritem=listener;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(listener!=null){
-            listener.onClick(v);
-        }
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {

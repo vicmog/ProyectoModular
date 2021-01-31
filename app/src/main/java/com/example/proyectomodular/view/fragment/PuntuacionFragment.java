@@ -140,7 +140,8 @@ public class PuntuacionFragment extends Fragment {
         intent.setData(Uri.parse("mailto:"));
         intent.setType("message/rfc822");
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-            startActivity(Intent.createChooser(intent, "Elige una aplicación de mensajería:"));
+            //startActivity(Intent.createChooser(intent, "Elige una aplicación de mensajería:"));
+            startActivity(intent);
         }
     }
 
