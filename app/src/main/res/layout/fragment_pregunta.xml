@@ -101,8 +101,9 @@
         android:text="Siguiente"
         android:textColor="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edRes4"
-        tools:layout_editor_absoluteX="152dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edRes4" />
 
     <EditText
         android:id="@+id/etPregunta"
