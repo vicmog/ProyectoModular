@@ -136,10 +136,10 @@ public class ContactosFragment extends DialogFragment implements AdapterView.OnI
         String[] emails = emailList.split(",");
 
         String[] correos = emails;
-        String asuntoEmail = this.getString(R.string.app_name)+" - "+viewModel.getUsuarioPuntuacion().getNombre()+" - Posición en el Ranking!!";
-        String mensaje = viewModel.getUsuarioPuntuacion().getNombre()+"! Has conseguido "
-                +viewModel.getUsuarioPuntuacion().getNRespuestasCorrectas()+" puntos. \n \n"+
-                "Enhorabuena! Sigue así y supera tu marca!";
+        String asuntoEmail = this.getString(R.string.app_name)+" - "+viewModel.getUsuarioPuntuacion().getNombre()+" - Puntuación en el Ranking!!";
+        String mensaje = viewModel.getUsuarioPuntuacion().getNombre()+" ha conseguido "
+                +viewModel.getUsuarioPuntuacion().getNRespuestasCorrectas()+" puntos, y quiere compartirlo contigo. \n \n"+
+                "Dale la enhorabuena e intenta superar su marca!";
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, correos);

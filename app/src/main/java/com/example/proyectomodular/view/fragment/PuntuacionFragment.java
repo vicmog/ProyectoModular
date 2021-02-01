@@ -148,7 +148,7 @@ public class PuntuacionFragment extends Fragment {
         }
 
         String[] correos = {emailAccount};
-        String asuntoEmail = this.getString(R.string.app_name)+" - "+viewModel.getUsuarioPuntuacion().getNombre()+" - Posición en el Ranking!!";
+        String asuntoEmail = this.getString(R.string.app_name)+" - "+viewModel.getUsuarioPuntuacion().getNombre()+" - Puntuación en el Ranking!!";
         String mensaje = viewModel.getUsuarioPuntuacion().getNombre()+"! Has conseguido "
                 +viewModel.getUsuarioPuntuacion().getNRespuestasCorrectas()+" puntos. \n \n"+
                 "Enhorabuena! Sigue así y supera tu marca!";
