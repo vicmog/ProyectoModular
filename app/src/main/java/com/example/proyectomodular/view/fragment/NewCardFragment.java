@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.proyectomodular.R;
@@ -40,7 +41,7 @@ public class NewCardFragment extends Fragment {
     private EditText etDesc;
     private ImageView pic;
     private final int PHOTO_SELECTED=1;
-    private String url;
+    private String url="";
     private NavController navController;
 
 
@@ -65,18 +66,27 @@ public class NewCardFragment extends Fragment {
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewModel vm = new ViewModelProvider(getActivity()).get(ViewModel.class);
-                Carta carta = new Carta(url, etNombre.getText().toString(), etDesc.getText().toString());
-                vm.insertCarta(carta);
 
-                vm.getCardId().observe(getActivity(), new Observer<Long>() {
-                    @Override
-                    public void onChanged(Long aLong) {
-                        vm.setIdCarta(aLong);
-                    }
-                });
-                navController = Navigation.findNavController(view);
-                navController.navigate(R.id.preguntaFragment);
+                if(etNombre.getText().toString().equalsIgnoreCase("") || etDesc.getText().toString().equalsIgnoreCase("") || url.equalsIgnoreCase("")){
+                    Toast.makeText(getContext(), "Rellena los campos!", Toast.LENGTH_SHORT).show();
+                }else{
+                    ViewModel vm = new ViewModelProvider(getActivity()).get(ViewModel.class);
+                    Carta carta = new Carta(url, etNombre.getText().toString(), etDesc.getText().toString());
+                    vm.insertCarta(carta);
+
+                    vm.getCardId().observe(getActivity(), new Observer<Long>() {
+                        @Override
+                        public void onChanged(Long aLong) {
+                            vm.setIdCarta(aLong);
+                        }
+                    });
+                    navController = Navigation.findNavController(view);
+                    navController.navigate(R.id.preguntaFragment);
+                }
+
+
+
+
             }
         });
 
