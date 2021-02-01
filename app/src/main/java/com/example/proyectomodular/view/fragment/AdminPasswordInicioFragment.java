@@ -64,7 +64,7 @@ private ViewModel miViewModel;
                 if(compruebaClaves()){
 
                     navController.navigate(R.id.nuevoJugadorFragment);
-                    Carta carta1 = new Carta("https://animalmascota.com/wp-content/2015/08/leon-curiosidades.jpg","Leon","El cuerpo del león es musculoso y viene acompañado de una cabeza grande con un hocico corto y ancho, de donde sobresalen sus largos y afilados caninos y sus bigotes esenciales para que puedan guiarse en la oscuridad.");
+                    Carta carta1 = new Carta("https://media.tenor.com/images/39a65096bb0b641543b2dfc0a775df61/tenor.gif","Leon","El cuerpo del león es musculoso y viene acompañado de una cabeza grande con un hocico corto y ancho, de donde sobresalen sus largos y afilados caninos y sus bigotes esenciales para que puedan guiarse en la oscuridad.");
                     miViewModel.insertCarta(carta1);
                     try {
                         Thread.sleep(1000);
@@ -77,7 +77,7 @@ private ViewModel miViewModel;
                     miViewModel.insertPregunta(new Pregunta(1,"¿Cuanto llega a pesar el león africano?","Hasta 250 kg","Hasta 100 kg","Hasta 400 kg","Hasta 1 tonelada"));
 
 
-                    Carta carta2 = new Carta("https://kids.sandiegozoo.org/sites/default/files/2019-07/animal-hero-bonoborighte.jpg","Bonobo","Los bonobos se ven raramente fuera de su hábitat natural, por lo que no son tan conocidos como los chimpancés comunes. A primera vista son muy parecidos a estos, pero suelen tener la cara negra, las orejas más pequeñas y las piernas más largas.");
+                    Carta carta2 = new Carta("https://thumbs.gfycat.com/AcclaimedCrazyFrillneckedlizard-size_restricted.gif","Bonobo","Los bonobos se ven raramente fuera de su hábitat natural, por lo que no son tan conocidos como los chimpancés comunes. A primera vista son muy parecidos a estos, pero suelen tener la cara negra, las orejas más pequeñas y las piernas más largas.");
                     miViewModel.insertCarta(carta2);
                     miViewModel.insertPregunta(new Pregunta(2,"¿Cuantos existen?","Unos 10.000","Unos 25.000","Menos de 3.000","Mas de 50.000"));
                     miViewModel.insertPregunta(new Pregunta(2,"¿Donde se ubican?","En el congo","En Zambia","En el sudeste asiatico","En Madagascar"));
@@ -85,6 +85,8 @@ private ViewModel miViewModel;
                     miViewModel.insertPregunta(new Pregunta(2,"¿Cual de las siguientes es correcta?","Son mas pacificos que los chimpances","Se parecen fisicamente a los orangutanes","Los ojos son de color rojo","Los bonobos estan siempre en guerra"));
 
 
+
+                    //https://66.media.tumblr.com/e9639878685a2ddcda83680b47dfa264/faf037046e56532d-f8/s640x960/4ac7609cce7d357763310a5d501ef6de59eb3396.gif
                 }
 
             }
