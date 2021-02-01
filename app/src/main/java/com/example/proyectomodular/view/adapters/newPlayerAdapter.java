@@ -77,6 +77,7 @@ public class newPlayerAdapter extends RecyclerView.Adapter<newPlayerAdapter.MyVi
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("¿Como te llamas?");
                 final EditText input = new EditText(context);
+                NavController navController = Navigation.findNavController(v);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
@@ -89,9 +90,9 @@ public class newPlayerAdapter extends RecyclerView.Adapter<newPlayerAdapter.MyVi
                         ViewModel vm = new ViewModel(application);
                         vm.insertUsuario(user);
 
-                        NavController navController = Navigation.findNavController(v);
-                        navController.navigate(R.id.adminFragment);
                         Toast.makeText(context, ""+user.getNombre()+" ha sido creado!", Toast.LENGTH_SHORT).show();
+
+                        navController.navigate(R.id.adminFragment);
                     }
                 });
 
