@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.proyectomodular.R;
 import com.example.proyectomodular.model.room.entity.Usuario;
@@ -34,6 +36,7 @@ public class HallFameFragment extends Fragment {
     private RecyclerView recyclerView;
     private PuntuacionRecyclerAdapter adapter;
     private List<Usuario> jugadores;
+    private Animation animationTrans;
 
     public HallFameFragment() {
         // Required empty public constructor
@@ -49,6 +52,8 @@ public class HallFameFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        animationTrans = AnimationUtils.loadAnimation(getActivity(),R.anim.trans);
         bottomNavigationView = view.findViewById(R.id.bottom_navigation_hall);
         navController = Navigation.findNavController(view);
 
@@ -78,6 +83,7 @@ public class HallFameFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         adapter = new PuntuacionRecyclerAdapter(getActivity(),jugadores,getView());
         recyclerView.setAdapter(adapter);
+        recyclerView.startAnimation(animationTrans);
 
         viewModel.getLiveUsuarioPuntuacionList().observe(getActivity(), new Observer<List<Usuario>>() {
             @Override

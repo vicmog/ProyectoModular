@@ -67,7 +67,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull CardAdapter.MyViewHolder holder, int position) {
 
         String descr = cardlist.get(position).getDescripcion();
-        String descr2 = descr.substring(0,90)+" [...]";
+        String descr2;
+        if(descr.length()>90){
+            descr2 = descr.substring(0,90)+" [...]";
+        }else{
+            descr2 = cardlist.get(position).getDescripcion();
+        }
+
         Log.v("asd",descr2);
         holder.name.setText(cardlist.get(position).getNombreAnimal());
         holder.decr.setText(descr2);

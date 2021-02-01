@@ -62,6 +62,7 @@ public class EditCardFragment extends Fragment {
     private final int PHOTO_SELECTED=1;
     private String url;
     private Animation animationScale;
+    private Carta carta;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,13 +102,15 @@ public class EditCardFragment extends Fragment {
 
         ViewModel vm = new ViewModelProvider((ViewModelStoreOwner) getContext()).get(ViewModel.class);
 
-        Carta carta = vm.getEditarCarta();
+        carta = vm.getEditarCarta();
 
         etNombre.setText(carta.getNombreAnimal());
         etDescr.setText(carta.getDescripcion());
         Glide.with(getContext())
                 .load(carta.getUrlFoto())
                 .into(pic);
+
+
 
         vm.postPreguntas(carta.getId());
         vm.getListaPreguntas().observe(getActivity(), new Observer<List<Pregunta>>() {
@@ -215,7 +218,6 @@ public class EditCardFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        ViewModel vm = new ViewModelProvider((ViewModelStoreOwner) getContext()).get(ViewModel.class);
                         carta.setDescripcion(input.getText().toString());
                         vm.updateCarta(carta);
                         Toast.makeText(getContext(), "Guardado", Toast.LENGTH_SHORT).show();
@@ -243,7 +245,9 @@ public class EditCardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cargarImagen();
+
             }
+
         });
 
 
@@ -294,6 +298,9 @@ public class EditCardFragment extends Fragment {
             Uri uri = data.getData();
             String patron = creaPatron(10);
             url = guardarImagen(patron, uri);
+            carta.setUrlFoto(url);
+            ViewModel vm = new ViewModelProvider((ViewModelStoreOwner) getContext()).get(ViewModel.class);
+            vm.updateCarta(carta);
 
         }
     }

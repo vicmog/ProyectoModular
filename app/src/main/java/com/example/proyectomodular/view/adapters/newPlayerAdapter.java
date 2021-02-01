@@ -89,7 +89,7 @@ public class newPlayerAdapter extends RecyclerView.Adapter<newPlayerAdapter.MyVi
                         ViewModel vm = new ViewModel(application);
                         vm.insertUsuario(user);
 
-                        NavController navController = Navigation.findNavController(view);
+                        NavController navController = Navigation.findNavController(v);
                         navController.navigate(R.id.adminFragment);
                         Toast.makeText(context, ""+user.getNombre()+" ha sido creado!", Toast.LENGTH_SHORT).show();
                     }

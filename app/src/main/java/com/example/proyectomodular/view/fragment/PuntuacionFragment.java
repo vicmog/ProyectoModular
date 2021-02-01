@@ -24,6 +24,8 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,6 +43,10 @@ public class PuntuacionFragment extends Fragment {
     private TextView nombre,puntuacion;
     private ImageView avatar;
     private Button enviarCorreo,compartirPuntuacion;
+    private Animation animationScale;
+    private TextView puntuacion1;
+    private TextView puntuacion2;
+    private TextView puntuacion3;
 
     private final static int PERMISOS = 1;
     private boolean permisoCuentas = false;
@@ -57,12 +63,16 @@ public class PuntuacionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        animationScale = AnimationUtils.loadAnimation(getActivity(),R.anim.scale);
         viewModel = new ViewModelProvider(getActivity()).get(ViewModel.class);
         nombre = view.findViewById(R.id.tv_nombrePuntuacion);
         puntuacion = view.findViewById(R.id.tv_puntuacionPuntuacion);
         avatar = view.findViewById(R.id.ivAvatarPuntuacion);
         enviarCorreo = view.findViewById(R.id.btn_enviarMail);
         compartirPuntuacion = view.findViewById(R.id.btn_compartirPuntuacion);
+        puntuacion1 = view.findViewById(R.id.tv_puntuacion1);
+        puntuacion2 = view.findViewById(R.id.tv_puntuacion2);
+        puntuacion3 = view.findViewById(R.id.tv_puntuacion3);
         Toolbar myToolbar = (Toolbar) view.findViewById(R.id.my_toolbar_puntuacion);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
@@ -79,6 +89,16 @@ public class PuntuacionFragment extends Fragment {
         nombre.setText(viewModel.getUsuarioPuntuacion().getNombre());
         puntuacion.setText(viewModel.getUsuarioPuntuacion().getNRespuestasCorrectas()+" puntos");
         avatar.setImageResource(viewModel.getUsuarioPuntuacion().getAvatar());
+
+        nombre.startAnimation(animationScale);
+        puntuacion.startAnimation(animationScale);
+        avatar.startAnimation(animationScale);
+        enviarCorreo.startAnimation(animationScale);
+        compartirPuntuacion.startAnimation(animationScale);
+        puntuacion1.startAnimation(animationScale);
+        puntuacion2.startAnimation(animationScale);
+        puntuacion3.startAnimation(animationScale);
+
         enviarCorreo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
