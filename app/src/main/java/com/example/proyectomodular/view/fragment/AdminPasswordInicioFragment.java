@@ -63,7 +63,7 @@ private ViewModel miViewModel;
 
                 if(compruebaClaves()){
 
-                    navController.navigate(R.id.hallFameFragment);
+                    navController.navigate(R.id.nuevoJugadorFragment);
                     Carta carta1 = new Carta("https://animalmascota.com/wp-content/2015/08/leon-curiosidades.jpg","Leon","El cuerpo del león es musculoso y viene acompañado de una cabeza grande con un hocico corto y ancho, de donde sobresalen sus largos y afilados caninos y sus bigotes esenciales para que puedan guiarse en la oscuridad.");
                     miViewModel.insertCarta(carta1);
                     try {
@@ -92,7 +92,7 @@ private ViewModel miViewModel;
 
         String posibleClave = spPasswordAdmin.getString(KEY,"");
         if(posibleClave.length() != 0 ){
-            navController.navigate(R.id.hallFameFragment);
+            navController.navigate(R.id.juegoFragment);
         }
 
 
